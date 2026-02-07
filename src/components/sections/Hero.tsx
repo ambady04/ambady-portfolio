@@ -3,13 +3,17 @@
 import React, { useEffect, useRef } from "react";
 import { portfolioData } from "@/data/portfolio";
 import { gsap } from "gsap";
+import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import { ArrowDownRight } from "lucide-react";
+import StarBorder from "../reactbits/StarBorder";
+import GradualBlur from "../reactbits/GradualBlur";
+import DecryptedText from "../reactbits/DecryptedText";
+import BlurText from "../reactbits/BlurText";
+
+gsap.registerPlugin(ScrollToPlugin);
 
 const Hero = () => {
     const heroRef = useRef<HTMLDivElement>(null);
-    const title1Ref = useRef<HTMLSpanElement>(null);
-    const title2Ref = useRef<HTMLSpanElement>(null);
-    const subtitleRef = useRef<HTMLParagraphElement>(null);
     const btnRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
@@ -17,75 +21,95 @@ const Hero = () => {
             const tl = gsap.timeline({ defaults: { ease: "power4.out" } });
 
             tl.fromTo(
-                [title1Ref.current, title2Ref.current],
-                { y: 100, opacity: 0 },
-                { y: 0, opacity: 1, duration: 1.2, stagger: 0.2, delay: 0.5 }
-            )
-                .fromTo(
-                    subtitleRef.current,
-                    { y: 20, opacity: 0 },
-                    { y: 0, opacity: 1, duration: 1 },
-                    "-=0.5"
-                )
-                .fromTo(
-                    btnRef.current,
-                    { scale: 0.8, opacity: 0 },
-                    { scale: 1, opacity: 1, duration: 0.8 },
-                    "-=0.5"
-                );
+                btnRef.current,
+                { scale: 0.8, opacity: 0 },
+                { scale: 1, opacity: 1, duration: 0.8, delay: 1.5 }
+            );
         }, heroRef);
 
         return () => ctx.revert();
     }, []);
+
+    const handleScrollTo = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+        e.preventDefault();
+        gsap.to(window, {
+            duration: 1.5,
+            scrollTo: { y: href, autoKill: true },
+            ease: "power4.inOut",
+        });
+    };
 
     return (
         <section
             ref={heroRef}
             className="relative min-h-screen flex flex-col justify-center items-center px-6 pt-20 overflow-hidden"
         >
-            {/* Background Glow */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-primary/20 rounded-full blur-[120px] -z-10" />
-            <div className="absolute top-1/4 left-1/4 w-[300px] h-[300px] bg-secondary/10 rounded-full blur-[100px] -z-10 animate-pulse" />
-
-            <div className="text-center max-w-4xl">
-                <h1 className="text-6xl md:text-8xl font-black tracking-tighter mb-6 leading-[0.9]">
-                    <span ref={title1Ref} className="block text-white">
-                        MAKING DIGITAL
-                    </span>
-                    <span ref={title2Ref} className="block text-primary">
-                        EXCELLENCE.
-                    </span>
+            <div className="relative z-10 text-center max-w-5xl">
+                <h1 className="text-6xl md:text-[clamp(4rem,10vw,8rem)] font-black tracking-tighter mb-8 leading-[0.85] uppercase">
+                    <BlurText
+                        text="MAKING DIGITAL"
+                        delay={100}
+                        animateBy="letters"
+                        direction="top"
+                        className="block text-white"
+                    />
+                    <BlurText
+                        text="EXCELLENCE."
+                        delay={100}
+                        animateBy="letters"
+                        direction="top"
+                        className="block text-primary"
+                    />
                 </h1>
-                <p
-                    ref={subtitleRef}
-                    className="text-lg md:text-xl text-muted-foreground mb-10 max-w-2xl mx-auto leading-relaxed"
-                >
-                    {portfolioData.summary.substring(0, 150)}...
-                </p>
 
-                <div ref={btnRef} className="flex flex-col sm:flex-row gap-4 justify-center">
+                <BlurText
+                    text={portfolioData.summary.substring(0, 150) + "..."}
+                    delay={50}
+                    animateBy="words"
+                    direction="bottom"
+                    className="text-lg md:text-xl text-muted-foreground mb-10 max-w-2xl mx-auto leading-relaxed justify-center"
+                />
+
+                <div ref={btnRef} className="flex flex-col sm:flex-row gap-6 justify-center items-center">
                     <a
                         href="#projects"
+                        onClick={(e) => handleScrollTo(e, "#projects")}
                         className="group flex items-center justify-center px-8 py-4 bg-primary text-black font-bold rounded-full text-lg hover:bg-white transition-all overflow-hidden relative"
                     >
                         <span className="relative z-10 flex items-center gap-2">
                             View My Work <ArrowDownRight size={20} />
                         </span>
                     </a>
-                    <a
+
+                    <StarBorder
+                        as="a"
                         href="#contact"
-                        className="flex items-center justify-center px-8 py-4 border border-white/20 text-white font-bold rounded-full text-lg hover:bg-white/10 transition-all"
+                        onClick={(e: any) => handleScrollTo(e, "#contact")}
+                        color="#BA63F8"
+                        speed="6s"
+                        className="cursor-none"
                     >
                         Get In Touch
-                    </a>
+                    </StarBorder>
                 </div>
             </div>
 
             {/* Scroll Indicator */}
-            <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-muted-foreground animate-bounce">
+            <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-muted-foreground animate-bounce z-10">
                 <span className="text-[10px] uppercase tracking-widest">Scroll</span>
                 <div className="w-[1px] h-10 bg-gradient-to-b from-primary to-transparent" />
             </div>
+
+            {/* Bottom Gradual Blur for section transition */}
+            <GradualBlur
+                position="bottom"
+                height="10rem"
+                strength={3}
+                divCount={8}
+                exponential={true}
+                className="pointer-events-none"
+                zIndex={0}
+            />
         </section>
     );
 };

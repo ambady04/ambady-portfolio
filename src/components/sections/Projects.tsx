@@ -5,6 +5,8 @@ import { portfolioData } from "@/data/portfolio";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ExternalLink, Layers } from "lucide-react";
+import SplitText from "../reactbits/SplitText";
+import ShinyText from "../reactbits/ShinyText";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -44,12 +46,20 @@ const Projects = () => {
         >
             <div className="mb-16 flex flex-col md:flex-row md:items-end justify-between gap-8">
                 <div>
-                    <h2 className="text-sm font-bold uppercase tracking-[0.3em] text-primary mb-4 flex items-center gap-2">
-                        <span className="w-8 h-[1px] bg-primary"></span> Selected Works
-                    </h2>
-                    <h3 className="text-4xl md:text-5xl font-bold tracking-tighter text-white">
-                        Engineering <span className="text-primary">Impact.</span>
-                    </h3>
+                    <div className="mb-4 flex items-center gap-2">
+                        <span className="w-8 h-[1px] bg-primary"></span>
+                        <ShinyText
+                            text="Selected Works"
+                            className="text-sm font-bold uppercase tracking-[0.3em] text-primary"
+                            color="#BA63F8"
+                        />
+                    </div>
+                    <SplitText
+                        text="Engineering Impact."
+                        className="text-4xl md:text-5xl font-bold tracking-tighter text-white"
+                        delay={50}
+                        duration={0.6}
+                    />
                 </div>
                 <p className="max-w-md text-muted-foreground">
                     A collection of enterprise-grade systems and platforms I've architected and implemented.
@@ -88,12 +98,6 @@ const Projects = () => {
                                     </li>
                                 ))}
                             </ul>
-
-                            <div className="flex items-center gap-4">
-                                <button className="flex items-center gap-2 px-6 py-3 bg-white/5 hover:bg-white/10 text-white rounded-xl transition-all font-medium border border-white/10">
-                                    Case Study <ExternalLink size={16} />
-                                </button>
-                            </div>
                         </div>
                     </div>
                 ))}

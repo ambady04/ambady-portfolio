@@ -4,6 +4,10 @@ import React, { useEffect, useState } from "react";
 import { portfolioData } from "@/data/portfolio";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { gsap } from "gsap";
+import { ScrollToPlugin } from "gsap/ScrollToPlugin";
+
+gsap.registerPlugin(ScrollToPlugin);
 
 const Navbar = () => {
     const [scrolled, setScrolled] = useState(false);
@@ -24,6 +28,16 @@ const Navbar = () => {
         { name: "Skills", href: "#skills" },
         { name: "Contact", href: "#contact" },
     ];
+
+    const handleScrollTo = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+        e.preventDefault();
+        gsap.to(window, {
+            duration: 1.5,
+            scrollTo: { y: href, autoKill: true },
+            ease: "power4.inOut",
+        });
+        setIsOpen(false);
+    };
 
     return (
         <nav
@@ -50,6 +64,7 @@ const Navbar = () => {
                         <a
                             key={link.name}
                             href={link.href}
+                            onClick={(e) => handleScrollTo(e, link.href)}
                             className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors uppercase tracking-widest"
                         >
                             {link.name}
@@ -57,6 +72,7 @@ const Navbar = () => {
                     ))}
                     <a
                         href="#contact"
+                        onClick={(e) => handleScrollTo(e, "#contact")}
                         className="px-5 py-2 bg-primary text-black font-bold rounded-full text-sm hover:bg-white transition-all transform hover:scale-105 active:scale-95"
                     >
                         Hire Me
@@ -83,16 +99,16 @@ const Navbar = () => {
                     <a
                         key={link.name}
                         href={link.href}
+                        onClick={(e) => handleScrollTo(e, link.href)}
                         className="text-3xl font-bold text-white hover:text-primary transition-colors"
-                        onClick={() => setIsOpen(false)}
                     >
                         {link.name}
                     </a>
                 ))}
                 <a
                     href="#contact"
+                    onClick={(e) => handleScrollTo(e, "#contact")}
                     className="px-8 py-3 bg-primary text-black font-bold rounded-full text-xl"
-                    onClick={() => setIsOpen(false)}
                 >
                     Hire Me
                 </a>

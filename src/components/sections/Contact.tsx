@@ -85,31 +85,49 @@ const Contact = () => {
                     </div>
                 </div>
 
-                <div className="bg-card border border-white/10 p-10 rounded-[3rem] relative overflow-hidden">
-                    <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-primary to-secondary" />
-                    <h4 className="text-2xl font-bold text-white mb-8">Send Message</h4>
-                    <form className="space-y-6">
-                        <div className="grid md:grid-cols-2 gap-6">
-                            <input
-                                type="text"
-                                placeholder="Name"
-                                className="w-full bg-white/5 border border-white/10 px-6 py-4 rounded-2xl focus:outline-none focus:border-primary transition-all text-white"
-                            />
-                            <input
-                                type="email"
-                                placeholder="Email"
-                                className="w-full bg-white/5 border border-white/10 px-6 py-4 rounded-2xl focus:outline-none focus:border-primary transition-all text-white"
-                            />
+                <div className="relative group">
+                    <div className="absolute -inset-1 bg-gradient-to-r from-primary/20 to-secondary/20 rounded-[2.5rem] blur-xl opacity-0 group-hover:opacity-100 transition duration-1000"></div>
+                    <div className="relative bg-black/40 backdrop-blur-xl border border-white/10 p-10 rounded-[2.5rem] overflow-hidden">
+
+                        <div className="absolute top-6 right-2 p-10 opacity-20 pointer-events-none">
+                            <Send size={120} className="text-primary -rotate-12 translate-x-10 -translate-y-10" />
                         </div>
-                        <textarea
-                            rows={4}
-                            placeholder="Your Message..."
-                            className="w-full bg-white/5 border border-white/10 px-6 py-4 rounded-2xl focus:outline-none focus:border-primary transition-all text-white resize-none"
-                        ></textarea>
-                        <button className="w-full py-5 bg-primary hover:bg-white text-black font-bold rounded-2xl transition-all flex items-center justify-center gap-2 group">
-                            Send Message <Send size={20} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-all" />
-                        </button>
-                    </form>
+
+                        <h4 className="text-3xl font-bold text-white mb-2">Send Message</h4>
+                        <p className="text-muted-foreground mb-8 text-sm">I'm always open to discussing product design work or partnership opportunities.</p>
+
+                        <form className="space-y-6 relative z-10">
+                            <div className="grid md:grid-cols-2 gap-6">
+                                <div className="space-y-2">
+                                    <label className="text-xs uppercase tracking-widest text-muted-foreground font-bold ml-4">Name</label>
+                                    <input
+                                        type="text"
+                                        placeholder="John Doe"
+                                        className="w-full bg-white/5 border border-white/10 px-6 py-4 rounded-2xl focus:outline-none focus:border-primary/50 focus:bg-white/10 transition-all text-white placeholder:text-white/20"
+                                    />
+                                </div>
+                                <div className="space-y-2">
+                                    <label className="text-xs uppercase tracking-widest text-muted-foreground font-bold ml-4">Email</label>
+                                    <input
+                                        type="email"
+                                        placeholder="john@example.com"
+                                        className="w-full bg-white/5 border border-white/10 px-6 py-4 rounded-2xl focus:outline-none focus:border-primary/50 focus:bg-white/10 transition-all text-white placeholder:text-white/20"
+                                    />
+                                </div>
+                            </div>
+                            <div className="space-y-2">
+                                <label className="text-xs uppercase tracking-widest text-muted-foreground font-bold ml-4">Message</label>
+                                <textarea
+                                    rows={4}
+                                    placeholder="Tell me about your project..."
+                                    className="w-full bg-white/5 border border-white/10 px-6 py-4 rounded-2xl focus:outline-none focus:border-primary/50 focus:bg-white/10 transition-all text-white resize-none placeholder:text-white/20"
+                                ></textarea>
+                            </div>
+                            <button className="w-full py-5 bg-gradient-to-r from-primary to-secondary hover:opacity-90 text-white font-bold rounded-2xl transition-all flex items-center justify-center gap-2 group shadow-lg shadow-primary/25">
+                                Send Message <Send size={20} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-all" />
+                            </button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </section>

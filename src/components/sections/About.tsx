@@ -4,6 +4,9 @@ import React, { useEffect, useRef } from "react";
 import { portfolioData } from "@/data/portfolio";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import ShinyText from "../reactbits/ShinyText";
+import SplitText from "../reactbits/SplitText";
+import GradientText from "../reactbits/GradientText";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -40,13 +43,30 @@ const About = () => {
         >
             <div className="grid md:grid-cols-12 gap-12 items-start">
                 <div className="md:col-span-4">
-                    <h2 className="text-sm font-bold uppercase tracking-[0.3em] text-primary mb-4 flex items-center gap-2">
-                        <span className="w-8 h-[1px] bg-primary"></span> About Me
-                    </h2>
-                    <h3 className="text-4xl md:text-5xl font-bold tracking-tighter text-white leading-tight">
-                        Passive Passion, <br />
-                        <span className="text-primary">Active Excellence.</span>
-                    </h3>
+                    <div className="mb-4 flex items-center gap-2">
+                        <span className="w-8 h-[1px] bg-primary"></span>
+                        <ShinyText
+                            text="About Me"
+                            className="text-sm font-bold uppercase tracking-[0.3em] text-primary"
+                            color="#BA63F8"
+                            speed={3}
+                        />
+                    </div>
+                    <div className="text-4xl md:text-5xl font-bold tracking-tighter text-white leading-tight">
+                        <SplitText
+                            text="Passive Passion,"
+                            className="block"
+                            textAlign="left"
+                            delay={40}
+                        />
+                        <GradientText
+                            className="text-primary mt-2"
+                            showBorder={false}
+                            colors={["#BA63F8", "#9F27F5", "#E1BBFC"]}
+                        >
+                            Active Excellence.
+                        </GradientText>
+                    </div>
                 </div>
                 <div ref={textRef} className="md:col-span-8 flex flex-col gap-8">
                     <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed">

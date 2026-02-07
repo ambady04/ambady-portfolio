@@ -45,6 +45,18 @@
   --radius-2xl: calc(var(--radius) + 8px);
   --radius-3xl: calc(var(--radius) + 12px);
   --radius-4xl: calc(var(--radius) + 16px);
+
+  @keyframes star-movement-bottom {
+    0% { transform: translate(0%, 0%); opacity: 1; }
+    100% { transform: translate(-100%, 0%); opacity: 0; }
+  }
+  @keyframes star-movement-top {
+    0% { transform: translate(0%, 0%); opacity: 1; }
+    100% { transform: translate(100%, 0%); opacity: 0; }
+  }
+
+  --animate-star-movement-bottom: star-movement-bottom 6s linear infinite alternate;
+  --animate-star-movement-top: star-movement-top 6s linear infinite alternate;
 }
 
 :root {
@@ -57,6 +69,7 @@
   --popover-foreground: #f8faff;
   --primary: #BA63F8;
   --primary-foreground: #ffffff;
+  --primary-hex: 186, 99, 248;
   --secondary: #9F27F5;
   --secondary-foreground: #ffffff;
   --muted: #1a1a1a;
@@ -100,6 +113,12 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-transparent text-foreground;
+  }
+
+  @media (min-width: 768px) {
+    *, body, a, button, input, textarea, select, label, [role="button"], span, div {
+      cursor: none !important;
+    }
   }
 }

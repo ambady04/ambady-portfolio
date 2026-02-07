@@ -5,6 +5,7 @@ import { portfolioData } from "@/data/portfolio";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Briefcase } from "lucide-react";
+import ShinyText from "../reactbits/ShinyText";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -43,9 +44,14 @@ const Experience = () => {
             className="py-24 px-6 max-w-7xl mx-auto border-t border-white/5"
         >
             <div className="mb-16">
-                <h2 className="text-sm font-bold uppercase tracking-[0.3em] text-primary mb-4 flex items-center gap-2">
-                    <span className="w-8 h-[1px] bg-primary"></span> Career Path
-                </h2>
+                <div className="mb-4 flex items-center gap-2">
+                    <span className="w-8 h-[1px] bg-primary"></span>
+                    <ShinyText
+                        text="Career Path"
+                        className="text-sm font-bold uppercase tracking-[0.3em] text-primary"
+                        color="#BA63F8"
+                    />
+                </div>
                 <h3 className="text-4xl md:text-5xl font-bold tracking-tighter text-white">
                     Professional <span className="text-primary">Journey.</span>
                 </h3>
