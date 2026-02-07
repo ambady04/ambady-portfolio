@@ -10,29 +10,54 @@ gsap.registerPlugin(ScrollTrigger);
 
 const Skills = () => {
     const sectionRef = useRef<HTMLElement>(null);
-    const gridRef = useRef<HTMLDivElement>(null);
+    const containerRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         const ctx = gsap.context(() => {
+            // Reveal cards one by one
             gsap.fromTo(
-                gridRef.current?.children || [],
-                { scale: 0.8, opacity: 0 },
+                ".skill-card",
+                { y: 60, opacity: 0 },
                 {
-                    scale: 1,
+                    y: 0,
                     opacity: 1,
-                    duration: 0.8,
-                    stagger: 0.05,
-                    ease: "back.out(1.2)",
+                    duration: 1,
+                    stagger: 0.2,
+                    ease: "power4.out",
                     scrollTrigger: {
-                        trigger: gridRef.current,
-                        start: "top 90%",
+                        trigger: sectionRef.current,
+                        start: "top 80%",
                     },
                 }
             );
+
+            // Floating animation for icons
+            gsap.to(".skill-icon", {
+                y: -10,
+                duration: 2,
+                repeat: -1,
+                yoyo: true,
+                ease: "power1.inOut",
+                stagger: {
+                    each: 0.5,
+                    from: "random"
+                }
+            });
         }, sectionRef);
 
         return () => ctx.revert();
     }, []);
+
+    const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+        const cards = document.getElementsByClassName("skill-card");
+        for (const card of cards) {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            (card as HTMLElement).style.setProperty("--mouse-x", `${x}px`);
+            (card as HTMLElement).style.setProperty("--mouse-y", `${y}px`);
+        }
+    };
 
     const categories = [
         { title: "Languages", skills: portfolioData.skills.languages, icon: <Code2 /> },
@@ -46,33 +71,55 @@ const Skills = () => {
             id="skills"
             ref={sectionRef}
             className="py-24 px-6 max-w-7xl mx-auto border-t border-white/5"
+            onMouseMove={handleMouseMove}
         >
             <div className="mb-16">
                 <h2 className="text-sm font-bold uppercase tracking-[0.3em] text-primary mb-4 flex items-center gap-2">
                     <span className="w-8 h-[1px] bg-primary"></span> Capabilities
                 </h2>
                 <h3 className="text-4xl md:text-5xl font-bold tracking-tighter text-white">
-                    Technical <span className="text-primary">Ecosystem.</span>
+                    Technical <span className="text-primary italic font-serif">Ecosystem.</span>
                 </h3>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6" ref={containerRef}>
                 {categories.map((cat, idx) => (
-                    <div key={idx} className="flex flex-col gap-6">
-                        <div className="flex items-center gap-3 text-primary">
-                            <div className="p-2 bg-primary/10 rounded-lg">{cat.icon}</div>
-                            <h4 className="font-bold text-lg text-white">{cat.title}</h4>
+                    <div
+                        key={idx}
+                        className="skill-card relative p-8 rounded-[2rem] bg-white/[0.03] border border-white/10 overflow-hidden group hover:border-primary/50 transition-colors duration-500"
+                    >
+                        {/* Spotlight Effect overlay */}
+                        <div
+                            className="pointer-events-none absolute -inset-px opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-30"
+                            style={{
+                                background: `radial-gradient(600px circle at var(--mouse-x) var(--mouse-y), rgba(186, 99, 248, 0.15), transparent 40%)`
+                            }}
+                        />
+
+                        <div className="relative z-10 flex flex-col gap-6">
+                            <div className="flex items-center gap-4">
+                                <div className="skill-icon w-12 h-12 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary shadow-[0_0_20px_rgba(186,99,248,0.2)]">
+                                    {cat.icon}
+                                </div>
+                                <h4 className="font-bold text-lg text-white group-hover:text-primary transition-colors">{cat.title}</h4>
+                            </div>
+
+                            <div className="flex flex-wrap gap-2">
+                                {cat.skills.map((skill, i) => (
+                                    <span
+                                        key={i}
+                                        className="px-3 py-1.5 bg-white/5 border border-white/10 rounded-xl text-[10px] font-mono tracking-wider text-muted-foreground hover:bg-primary/10 hover:border-primary/30 hover:text-primary transition-all cursor-default"
+                                    >
+                                        {skill}
+                                    </span>
+                                ))}
+                            </div>
                         </div>
-                        <div ref={gridRef} className="flex flex-wrap gap-2">
-                            {cat.skills.map((skill, i) => (
-                                <span
-                                    key={i}
-                                    className="px-4 py-2 bg-white/5 border border-white/10 rounded-full text-xs font-bold text-muted-foreground hover:border-primary/50 hover:text-white transition-all cursor-default"
-                                >
-                                    {skill}
-                                </span>
-                            ))}
-                        </div>
+
+                        {/* Background subtle grid pattern */}
+                        <div className="absolute inset-0 opacity-[0.03] pointer-events-none z-0"
+                            style={{ backgroundImage: `radial-gradient(circle at 1px 1px, white 1px, transparent 0)`, backgroundSize: '24px 24px' }}
+                        />
                     </div>
                 ))}
             </div>

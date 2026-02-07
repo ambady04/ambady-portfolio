@@ -3,6 +3,7 @@ export const portfolioData = {
   location: "Changanacherry, Kottayam",
   email: "ambadyanilkumar586@gmail.com",
   phone: "+91 8138853946",
+  image: "/images/ambady.jpg",
   summary: "Full-Stack Developer with 4 years of experience specializing in Python, Django, Next.js, and React.js. Proven track record building scalable, high-performance web applications and enterprise systems. Currently contributing to product development at Ribos (formerly Tegain), focusing on backend architecture, API-driven solutions, and performance optimizations. Over the last six months, actively leading the frontend development of Talrop ERP, enhancing user interfaces and optimizing performance using Next.js and React.js. Strong analytical thinker with meticulous attention to detail, experienced in designing optimized PostgreSQL schemas, implementing robust RESTful APIs, and collaborating closely with cross-functional teams to deliver seamless user experiences.",
   socialLinks: {
     linkedin: "https://www.linkedin.com/in/ambady-mattathil/",

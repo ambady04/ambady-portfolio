@@ -61,9 +61,6 @@ const Projects = () => {
                         duration={0.6}
                     />
                 </div>
-                <p className="max-w-md text-muted-foreground">
-                    A collection of enterprise-grade systems and platforms I've architected and implemented.
-                </p>
             </div>
 
             <div className="grid md:grid-cols-2 gap-8">
