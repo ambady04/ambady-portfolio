@@ -22,20 +22,22 @@ export default function Home() {
   }, []);
 
   return (
-    <ClickSpark sparkColor="#BA63F8" sparkSize={10} sparkRadius={15} sparkCount={8} duration={400}>
-      <main className="bg-black text-white selection:bg-primary selection:text-black">
-        <CustomCursor />
-        <Navbar />
-        <Hero />
-        <div className="relative z-10 bg-black">
-          <About />
-          <Experience />
-          <Projects />
-          <Skills />
-          <Contact />
-          <Footer />
-        </div>
-      </main>
-    </ClickSpark>
+    <>
+      <ClickSpark sparkColor="#BA63F8" sparkSize={10} sparkRadius={15} sparkCount={8} duration={400}>
+        <main className="bg-black text-white selection:bg-primary selection:text-black min-h-screen">
+          <CustomCursor />
+          <Navbar />
+          <Hero />
+          <div className="relative z-10 bg-black">
+            <About />
+            <Experience />
+            <Projects />
+            <Skills />
+            <Contact />
+            <Footer />
+          </div>
+        </main>
+      </ClickSpark>
+    </>
   );
 }

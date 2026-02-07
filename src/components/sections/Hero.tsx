@@ -9,6 +9,7 @@ import StarBorder from "../reactbits/StarBorder";
 import GradualBlur from "../reactbits/GradualBlur";
 import DecryptedText from "../reactbits/DecryptedText";
 import BlurText from "../reactbits/BlurText";
+import ShinyText from "../reactbits/ShinyText";
 
 gsap.registerPlugin(ScrollToPlugin);
 
@@ -27,6 +28,9 @@ const Hero = () => {
                 { y: 100, opacity: 0 },
                 { y: 0, opacity: 1, duration: 1.5, stagger: 0.2 }
             );
+
+            // Staggered entrance for the shiny text specifically if needed
+            // But let's let the container handle it for now.
 
             // Subtle parallax for background elements
             gsap.to(".bg-element", {
@@ -79,18 +83,27 @@ const Hero = () => {
                     <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-white/70">Available for projects</span>
                 </div>
 
-                <h1 className="text-6xl md:text-[clamp(4.5rem,11vw,9rem)] font-black tracking-tighter mb-8 leading-[0.8] uppercase flex flex-col items-center">
-                    <span className="block text-white overflow-hidden">
+                <h1 className="flex flex-col items-center select-none mb-12">
+                    <span className="text-[10px] md:text-xs uppercase tracking-[0.6em] text-white/50 mb-4 font-bold overflow-hidden h-4">
                         <BlurText
-                            text="CRAFTING"
+                            text="BUILDING THE"
                             delay={100}
                             animateBy="letters"
                             direction="top"
                             className="inline-block"
                         />
                     </span>
-                    <span className="block text-primary italic font-serif mt-2 lowercase tracking-normal md:text-[clamp(4rem,10vw,8rem)]">
-                        digital excellence.
+                    <span className="text-[clamp(2.5rem,8vw,7rem)] font-black tracking-tighter leading-none uppercase py-2">
+                        <ShinyText
+                            text="EXTRAORDINARY"
+                            color="#ffffff"
+                            shineColor="#BA63F8"
+                            speed={3}
+                            className="inline-block px-2"
+                        />
+                    </span>
+                    <span className="mt-6 text-primary italic font-serif lowercase tracking-normal text-xl md:text-4xl drop-shadow-[0_0_15px_rgba(186,99,248,0.5)]">
+                        shaping next-gen reality.
                     </span>
                 </h1>
 
