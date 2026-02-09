@@ -67,16 +67,20 @@ const CustomCursor = () => {
         const handleHoverStart = (e: MouseEvent) => {
             const target = e.target as HTMLElement;
             if (target.tagName === "A" || target.tagName === "BUTTON" || target.closest("a") || target.closest("button")) {
-                // FIXED: Zero-Tolerance Stable Hover (Color Only)
-                // We keep geometry exactly the same to prevent any alignment "drift"
+                const isDark = document.documentElement.classList.contains('dark');
+                const hoverColor = isDark ? "#ffffff" : "#000000";
+
+                // FIXED: Direct Theme-aware Hover (Explicit colors + full opacity)
                 gsap.to([inner, outer], {
-                    stroke: "#ffffff",
+                    stroke: hoverColor,
+                    strokeOpacity: 1,
                     strokeWidth: 2,
                     duration: 0.3,
                     ease: "power2.out"
                 });
                 gsap.to(prism, {
-                    fill: "#ffffff",
+                    fill: hoverColor,
+                    opacity: 1,
                     duration: 0.3,
                     ease: "power2.out"
                 });
@@ -88,20 +92,21 @@ const CustomCursor = () => {
             if (target.tagName === "A" || target.tagName === "BUTTON" || target.closest("a") || target.closest("button")) {
                 gsap.to(inner, {
                     stroke: "var(--foreground)",
-                    opacity: 0.4,
+                    strokeOpacity: 0.4,
                     strokeWidth: 1,
                     duration: 0.3,
                     ease: "power2.inOut"
                 });
                 gsap.to(outer, {
                     stroke: "var(--primary)",
-                    opacity: 0.4,
+                    strokeOpacity: 0.4,
                     strokeWidth: 1,
                     duration: 0.3,
                     ease: "power2.inOut"
                 });
                 gsap.to(prism, {
                     fill: "var(--primary)",
+                    opacity: 1,
                     duration: 0.3,
                     ease: "power2.inOut"
                 });
@@ -134,18 +139,18 @@ const CustomCursor = () => {
             >
                 <circle
                     ref={prismRef}
-                    r="3"
+                    r="2"
                     fill="var(--primary)"
                     cx="0"
                     cy="0"
                 />
                 <rect
                     ref={innerRef}
-                    x="-15"
-                    y="-15"
-                    width="30"
-                    height="30"
-                    rx="8"
+                    x="-12"
+                    y="-12"
+                    width="24"
+                    height="24"
+                    rx="6"
                     fill="none"
                     stroke="var(--foreground)"
                     strokeOpacity="0.4"
@@ -153,11 +158,11 @@ const CustomCursor = () => {
                 />
                 <rect
                     ref={outerRef}
-                    x="-22"
-                    y="-22"
-                    width="44"
-                    height="44"
-                    rx="12"
+                    x="-17"
+                    y="-17"
+                    width="34"
+                    height="34"
+                    rx="10"
                     fill="none"
                     stroke="var(--primary)"
                     strokeOpacity="0.4"
