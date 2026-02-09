@@ -5,6 +5,7 @@ import { portfolioData } from "@/data/portfolio";
 import { Mail, Phone, MapPin, Send, CheckCircle2 } from "lucide-react";
 import { gsap } from "gsap";
 import emailjs from "@emailjs/browser";
+import CountryCodeSelect from "../ui/CountryCodeSelect";
 
 const Contact = () => {
     const sectionRef = useRef<HTMLElement>(null);
@@ -170,21 +171,10 @@ const Contact = () => {
                             <div className="space-y-2">
                                 <label className="text-xs uppercase tracking-widest text-muted-foreground font-bold ml-4">Phone</label>
                                 <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
-                                    <select
+                                    <CountryCodeSelect
                                         name="countryCode"
-                                        className="bg-white/5 border border-white/10 px-4 py-4 rounded-2xl focus:outline-none focus:border-primary/50 focus:bg-white/10 transition-all text-white w-full sm:w-[100px] md:w-[140px] appearance-none cursor-pointer text-sm"
                                         defaultValue="+91"
-                                    >
-                                        <option value="+1">🇺🇸 +1</option>
-                                        <option value="+44">🇬🇧 +44</option>
-                                        <option value="+91">🇮🇳 +91</option>
-                                        <option value="+971">🇦🇪 +971</option>
-                                        <option value="+61">🇦🇺 +61</option>
-                                        <option value="+49">🇩🇪 +49</option>
-                                        <option value="+33">🇫🇷 +33</option>
-                                        <option value="+81">🇯🇵 +81</option>
-                                        <option value="+86">🇨🇳 +86</option>
-                                    </select>
+                                    />
                                     <input
                                         name="phone"
                                         type="tel"

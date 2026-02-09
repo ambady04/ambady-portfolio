@@ -85,7 +85,7 @@ const HeroBackground = () => {
             {/* Premium Aceternity Shooting Stars */}
             <ShootingStars
                 minSpeed={15}
-                maxSpeed={25}
+                maxSpeed={15}
                 minDelay={2000}
                 maxDelay={5000}
                 starColor="#E1BBFC"
