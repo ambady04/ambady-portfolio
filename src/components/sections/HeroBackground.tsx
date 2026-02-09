@@ -13,6 +13,7 @@ const HeroBackground = () => {
     const orb3Ref = useRef<HTMLDivElement>(null);
     const orb4Ref = useRef<HTMLDivElement>(null);
     const orb5Ref = useRef<HTMLDivElement>(null);
+    const bubblesRef = useRef<(HTMLDivElement | null)[]>([]);
 
     useEffect(() => {
         setIsMounted(true);
@@ -42,6 +43,20 @@ const HeroBackground = () => {
             animateOrb(orb4Ref, 1);
             animateOrb(orb5Ref, 3);
 
+            // Animate Bubbles (Light Mode Only)
+            bubblesRef.current.forEach((bubble, i) => {
+                if (!bubble) return;
+                gsap.to(bubble, {
+                    y: "-100vh",
+                    x: `random(-50, 50)`,
+                    rotation: "random(-180, 180)",
+                    duration: "random(15, 25)",
+                    repeat: -1,
+                    delay: i * 1.5,
+                    ease: "none",
+                });
+            });
+
             // Subtle rotation for the whole container to keep the mesh "alive"
             gsap.to(".mesh-blob", {
                 rotate: 360,
@@ -62,6 +77,18 @@ const HeroBackground = () => {
                 duration: 2,
                 ease: "power2.out",
                 stagger: 0.1
+            });
+
+            // Parallax for bubbles
+            bubblesRef.current.forEach((bubble, i) => {
+                if (!bubble) return;
+                const factor = (i % 3 + 1) * 20;
+                gsap.to(bubble, {
+                    xPercent: xPos * (factor / 10),
+                    yPercent: yPos * (factor / 10),
+                    duration: 1.5,
+                    ease: "power1.out"
+                });
             });
         };
 
@@ -101,6 +128,27 @@ const HeroBackground = () => {
                     trailColor="#9F27F5"
                 />
             </div>
+
+            {/* Floating Bubbles (Light Mode Only) */}
+            {isMounted && (
+                <div className="absolute inset-0 dark:hidden">
+                    {[...Array(15)].map((_, i) => (
+                        <div
+                            key={i}
+                            ref={(el) => { if (el) bubblesRef.current[i] = el; }}
+                            className="absolute bg-primary/[0.08] border border-primary/20 rounded-full backdrop-blur-[4px] shadow-[0_4px_12px_rgba(var(--primary-hex),0.1)]"
+                            style={{
+                                width: `${Math.random() * 60 + 20}px`,
+                                height: `${Math.random() * 60 + 20}px`,
+                                left: `${Math.random() * 100}%`,
+                                top: `${Math.random() * 100 + 100}%`,
+                            }}
+                        >
+                            <div className="absolute top-[15%] left-[15%] w-[25%] h-[25%] bg-white/60 rounded-full blur-[1px]" />
+                        </div>
+                    ))}
+                </div>
+            )}
 
             {/* Animated Mesh Blobs */}
             <div
