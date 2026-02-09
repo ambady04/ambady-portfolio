@@ -2,14 +2,23 @@
 
 import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
+import { ShootingStars } from "@/components/ui/shooting-stars";
+import { StarsBackground } from "@/components/ui/stars-background";
 
 const HeroBackground = () => {
+    const [isMounted, setIsMounted] = React.useState(false);
     const containerRef = useRef<HTMLDivElement>(null);
     const orb1Ref = useRef<HTMLDivElement>(null);
     const orb2Ref = useRef<HTMLDivElement>(null);
     const orb3Ref = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
+        setIsMounted(true);
+    }, []);
+
+    useEffect(() => {
+        if (!isMounted) return;
+
         const ctx = gsap.context(() => {
             // Floating animation for orbs
             const animateOrb = (ref: React.RefObject<HTMLDivElement | null>, delay: number) => {
@@ -57,12 +66,31 @@ const HeroBackground = () => {
             ctx.revert();
             window.removeEventListener("mousemove", handleMouseMove);
         };
-    }, []);
+    }, [isMounted]);
 
     return (
         <div ref={containerRef} className="absolute inset-0 overflow-hidden pointer-events-none z-0">
             {/* Base Dark Background */}
             <div className="absolute inset-0 bg-black" />
+
+            {/* Premium Aceternity Stars Background */}
+            <StarsBackground
+                starDensity={0.00015}
+                allStarsTwinkle={true}
+                twinkleProbability={0.7}
+                minTwinkleSpeed={0.5}
+                maxTwinkleSpeed={1.5}
+            />
+
+            {/* Premium Aceternity Shooting Stars */}
+            <ShootingStars
+                minSpeed={15}
+                maxSpeed={25}
+                minDelay={2000}
+                maxDelay={5000}
+                starColor="#E1BBFC"
+                trailColor="#9F27F5"
+            />
 
             {/* Animated Mesh Blobs */}
             <div
@@ -77,24 +105,6 @@ const HeroBackground = () => {
                 ref={orb3Ref}
                 className="mesh-blob absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[50%] h-[50%] bg-[#BA63F8]/10 rounded-full blur-[100px] opacity-30"
             />
-
-            {/* Particle / Star Field */}
-            <div className="absolute inset-0 opacity-40">
-                {[...Array(50)].map((_, i) => (
-                    <div
-                        key={i}
-                        className="absolute bg-white rounded-full animate-pulse shadow-[0_0_2px_1px_rgba(255,255,255,0.3)]"
-                        style={{
-                            width: `${Math.random() * 2}px`,
-                            height: `${Math.random() * 2}px`,
-                            top: `${Math.random() * 100}%`,
-                            left: `${Math.random() * 100}%`,
-                            animationDelay: `${Math.random() * 2}s`,
-                            animationDuration: `2s`
-                        }}
-                    />
-                ))}
-            </div>
 
             {/* Grain Overlay for Texture */}
             <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
