@@ -22,11 +22,11 @@ const About = () => {
                 {
                     y: 0,
                     opacity: 1,
-                    duration: 1.5,
+                    duration: 0.8,
                     ease: "power3.out",
                     scrollTrigger: {
                         trigger: sectionRef.current,
-                        start: "top 80%",
+                        start: "top 95%",
                     },
                 }
             );
@@ -39,9 +39,9 @@ const About = () => {
         <section
             id="about"
             ref={sectionRef}
-            className="py-24 px-6 max-w-7xl mx-auto border-t border-white/5"
+            className="pt-8 pb-16 md:py-24 px-6 max-w-7xl mx-auto border-t border-white/5"
         >
-            <div className="grid md:grid-cols-12 gap-12 items-start">
+            <div className="grid lg:grid-cols-12 gap-12 md:gap-20 items-center w-full max-w-5xl mx-auto px-4">
                 <div className="md:col-span-5 flex flex-col gap-8">
                     <div className="flex items-center gap-2">
                         <span className="w-8 h-[1px] bg-primary"></span>
@@ -67,27 +67,19 @@ const About = () => {
                     </div>
                 </div>
 
-                <div ref={textRef} className="md:col-span-7 flex flex-col gap-8">
-                    <div className="text-4xl md:text-5xl font-bold tracking-tighter text-white leading-tight">
+                <div ref={textRef} className="md:col-span-7 flex flex-col gap-6 w-full max-w-full">
+                    <div className="text-xl sm:text-2xl md:text-5xl font-bold tracking-tighter text-white leading-tight break-words">
                         <SplitText
                             text="Crafting Solutions,"
                             className="block"
-                            textAlign="left"
-                            delay={40}
+                            delay={50}
                         />
-                        <GradientText
-                            className="text-primary mt-2"
-                            showBorder={false}
-                            colors={["#BA63F8", "#9F27F5", "#E1BBFC"]}
-                        >
-                            Building Impact.
-                        </GradientText>
+                        <span className="text-primary italic font-serif">Building Impact.</span>
                     </div>
-
-                    <p className="text-sm md:text-base text-muted-foreground leading-relaxed tracking-tight text-justify">
+                    <p className="text-[13px] sm:text-base text-muted-foreground leading-relaxed tracking-tight text-left break-words">
                         {portfolioData.summary}
                     </p>
-                    <div className="grid grid-cols-2 gap-8">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
                         <div>
                             <p className="text-4xl font-bold text-white tracking-tighter">4+</p>
                             <p className="text-sm text-primary uppercase tracking-widest mt-1">

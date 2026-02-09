@@ -10,6 +10,7 @@ import GradualBlur from "../reactbits/GradualBlur";
 import DecryptedText from "../reactbits/DecryptedText";
 import BlurText from "../reactbits/BlurText";
 import ShinyText from "../reactbits/ShinyText";
+import HeroBackground from "./HeroBackground";
 
 gsap.registerPlugin(ScrollToPlugin);
 
@@ -67,24 +68,22 @@ const Hero = () => {
     return (
         <section
             ref={heroRef}
-            className="relative min-h-screen flex flex-col items-center px-6 pt-20 overflow-hidden"
+            className="relative min-h-[80vh] md:min-h-screen flex flex-col items-center px-6 pt-28 md:pt-40 overflow-hidden"
         >
-            {/* Background Orbs for creative depth */}
-            <div className="absolute top-1/4 -left-20 w-96 h-96 bg-primary/10 rounded-full blur-[120px] bg-element pointer-events-none" data-depth="0.2" />
-            <div className="absolute bottom-1/4 -right-20 w-[500px] h-[500px] bg-secondary/10 rounded-full blur-[150px] bg-element pointer-events-none" data-depth="0.5" />
+            <HeroBackground />
 
-            <div className="relative z-10 text-center max-w-5xl hero-content">
+            <div className="relative z-10 text-center w-full max-w-5xl hero-content px-4">
                 {/* Status Badge */}
-                <div className="status-badge inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-8 backdrop-blur-sm">
+                <div className="status-badge inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 mb-6 backdrop-blur-sm">
                     <span className="relative flex h-2 w-2">
                         <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
                         <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
                     </span>
-                    <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-white/70">Available for projects</span>
+                    <span className="text-[9px] uppercase tracking-[0.2em] font-bold text-white/70">Available for projects</span>
                 </div>
 
-                <h1 className="flex flex-col items-center select-none mb-12">
-                    <span className="text-[10px] md:text-xs uppercase tracking-[0.6em] text-white/50 mb-4 font-bold overflow-hidden h-4">
+                <h1 className="flex flex-col items-center select-none mb-10 w-full overflow-hidden">
+                    <span className="text-[9px] md:text-xs uppercase tracking-[0.3em] md:tracking-[0.6em] text-white/50 mb-3 font-bold">
                         <BlurText
                             text="BUILDING THE"
                             delay={100}
@@ -93,22 +92,22 @@ const Hero = () => {
                             className="inline-block"
                         />
                     </span>
-                    <span className="text-[clamp(2.5rem,8vw,7rem)] font-black tracking-tighter leading-none uppercase py-2">
+                    <span className="text-[clamp(1.2rem,6vw,6.5rem)] font-black tracking-tighter leading-none uppercase py-2 w-full break-all md:break-words text-center">
                         <ShinyText
                             text="EXTRAORDINARY"
                             color="#ffffff"
                             shineColor="#BA63F8"
                             speed={3}
-                            className="inline-block px-2"
+                            className="inline-block px-1"
                         />
                     </span>
-                    <span className="mt-6 text-primary italic font-serif lowercase tracking-normal text-xl md:text-4xl drop-shadow-[0_0_15px_rgba(186,99,248,0.5)]">
+                    <span className="mt-4 text-primary italic font-serif lowercase tracking-normal text-lg md:text-4xl drop-shadow-[0_0_15px_rgba(186,99,248,0.5)]">
                         shaping next-gen reality.
                     </span>
                 </h1>
 
-                <p className="text-lg md:text-xl text-muted-foreground mb-12 max-w-3xl mx-auto leading-relaxed font-medium">
-                    Full-Stack Developer Specializing in Building <span className="text-white">Scalable Enterprise Systems</span> and <span className="text-white italic">High-Performance</span> Web Applications with Next.js and Python.
+                <p className="text-[13px] sm:text-base md:text-xl text-muted-foreground mb-10 max-w-2xl mx-auto leading-relaxed font-medium break-words px-4">
+                    Full-Stack Developer Specializing in Building <span className="text-white font-bold">Scalable Enterprise Systems</span> and <span className="text-white italic font-bold">High-Performance</span> Web Applications with Next.js and Python.
                 </p>
 
                 <div ref={btnRef} className="flex flex-col sm:flex-row gap-6 justify-center items-center">

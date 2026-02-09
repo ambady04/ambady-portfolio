@@ -1,6 +1,6 @@
 export const portfolioData = {
   name: "Ambady A",
-  location: "Changanacherry, Kottayam",
+  location: "Changanassery, Kottayam",
   email: "ambadyanilkumar586@gmail.com",
   phone: "+91 8138853946",
   image: "/images/ambady.jpg",

@@ -21,12 +21,12 @@ const Skills = () => {
                 {
                     y: 0,
                     opacity: 1,
-                    duration: 1,
-                    stagger: 0.2,
+                    duration: 0.6,
+                    stagger: 0.1,
                     ease: "power4.out",
                     scrollTrigger: {
                         trigger: sectionRef.current,
-                        start: "top 80%",
+                        start: "top 95%",
                     },
                 }
             );
@@ -70,7 +70,7 @@ const Skills = () => {
         <section
             id="skills"
             ref={sectionRef}
-            className="py-24 px-6 max-w-7xl mx-auto border-t border-white/5"
+            className="py-16 md:py-24 px-6 max-w-7xl mx-auto border-t border-white/5"
             onMouseMove={handleMouseMove}
         >
             <div className="mb-16">
@@ -86,7 +86,7 @@ const Skills = () => {
                 {categories.map((cat, idx) => (
                     <div
                         key={idx}
-                        className="skill-card relative p-8 rounded-[2rem] bg-white/[0.03] border border-white/10 overflow-hidden group hover:border-primary/50 transition-colors duration-500"
+                        className="skill-card relative p-6 md:p-8 rounded-3xl md:rounded-[2.2rem] bg-white/[0.03] border border-white/10 overflow-hidden group hover:border-primary/50 transition-colors duration-500"
                     >
                         {/* Spotlight Effect overlay */}
                         <div

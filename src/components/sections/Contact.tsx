@@ -18,11 +18,11 @@ const Contact = () => {
                 {
                     x: 0,
                     opacity: 1,
-                    duration: 1,
-                    stagger: 0.1,
+                    duration: 0.8,
+                    stagger: 0.05,
                     scrollTrigger: {
                         trigger: sectionRef.current,
-                        start: "top 85%",
+                        start: "top 95%",
                     },
                 }
             );
@@ -35,51 +35,51 @@ const Contact = () => {
         <section
             id="contact"
             ref={sectionRef}
-            className="py-24 px-6 max-w-7xl mx-auto border-t border-white/5"
+            className="py-16 md:py-24 px-4 md:px-6 max-w-7xl mx-auto border-t border-white/5 overflow-hidden"
         >
-            <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center w-full max-w-5xl mx-auto">
                 <div>
                     <h2 className="text-sm font-bold uppercase tracking-[0.3em] text-primary mb-4 flex items-center gap-2">
                         <span className="w-8 h-[1px] bg-primary"></span> Connection
                     </h2>
-                    <h3 className="text-5xl md:text-7xl font-bold tracking-tighter text-white mb-8">
+                    <h3 className="text-[clamp(1.5rem,8vw,4.5rem)] font-bold tracking-tighter text-white mb-8 leading-[1.1] break-all sm:break-words">
                         Let's build <br />
                         <span className="text-primary italic font-serif">something</span>{" "}
                         extraordinary.
                     </h3>
 
                     <div className="space-y-6">
-                        <div className="contact-item flex items-center gap-6 group">
-                            <div className="w-16 h-16 rounded-full bg-white/5 border border-white/10 flex items-center justify-center group-hover:border-primary transition-all">
-                                <Mail className="text-primary" size={24} />
+                        <div className="contact-item flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-6 group w-full overflow-hidden">
+                            <div className="w-10 h-10 sm:w-16 sm:h-16 rounded-full bg-white/5 border border-white/10 flex items-center justify-center group-hover:border-primary transition-all flex-shrink-0">
+                                <Mail className="text-primary" size={18} />
                             </div>
-                            <div>
-                                <p className="text-xs uppercase tracking-widest text-muted-foreground mb-1">Email Me</p>
-                                <a href={`mailto:${portfolioData.email}`} className="text-xl font-bold text-white hover:text-primary transition-colors">
+                            <div className="w-full overflow-hidden">
+                                <p className="text-[9px] uppercase tracking-widest text-muted-foreground mb-0.5">Email Me</p>
+                                <a href={`mailto:${portfolioData.email}`} className="text-base sm:text-xl font-bold text-white hover:text-primary transition-colors block truncate w-full">
                                     {portfolioData.email}
                                 </a>
                             </div>
                         </div>
 
-                        <div className="contact-item flex items-center gap-6 group">
-                            <div className="w-16 h-16 rounded-full bg-white/5 border border-white/10 flex items-center justify-center group-hover:border-primary transition-all">
-                                <Phone className="text-primary" size={24} />
+                        <div className="contact-item flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-6 group w-full overflow-hidden">
+                            <div className="w-10 h-10 sm:w-16 sm:h-16 rounded-full bg-white/5 border border-white/10 flex items-center justify-center group-hover:border-primary transition-all flex-shrink-0">
+                                <Phone className="text-primary" size={18} />
                             </div>
-                            <div>
-                                <p className="text-xs uppercase tracking-widest text-muted-foreground mb-1">Call Me</p>
-                                <a href={`tel:${portfolioData.phone}`} className="text-xl font-bold text-white hover:text-primary transition-colors">
+                            <div className="w-full overflow-hidden">
+                                <p className="text-[9px] uppercase tracking-widest text-muted-foreground mb-0.5">Call Me</p>
+                                <a href={`tel:${portfolioData.phone}`} className="text-base sm:text-xl font-bold text-white hover:text-primary transition-colors block truncate w-full">
                                     {portfolioData.phone}
                                 </a>
                             </div>
                         </div>
 
-                        <div className="contact-item flex items-center gap-6 group">
-                            <div className="w-16 h-16 rounded-full bg-white/5 border border-white/10 flex items-center justify-center group-hover:border-primary transition-all">
-                                <MapPin className="text-primary" size={24} />
+                        <div className="contact-item flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-6 group w-full overflow-hidden">
+                            <div className="w-10 h-10 sm:w-16 sm:h-16 rounded-full bg-white/5 border border-white/10 flex items-center justify-center group-hover:border-primary transition-all flex-shrink-0">
+                                <MapPin className="text-primary" size={18} />
                             </div>
-                            <div>
-                                <p className="text-xs uppercase tracking-widest text-muted-foreground mb-1">Location</p>
-                                <p className="text-xl font-bold text-white">
+                            <div className="w-full overflow-hidden">
+                                <p className="text-[9px] uppercase tracking-widest text-muted-foreground mb-0.5">Location</p>
+                                <p className="text-base sm:text-xl font-bold text-white block truncate w-full">
                                     {portfolioData.location}
                                 </p>
                             </div>
@@ -88,10 +88,10 @@ const Contact = () => {
                 </div>
 
                 <div className="relative group">
-                    <div className="absolute -inset-1 bg-gradient-to-r from-primary/20 to-secondary/20 rounded-[2.5rem] blur-xl opacity-0 group-hover:opacity-100 transition duration-1000"></div>
-                    <div className="relative bg-black/40 backdrop-blur-xl border border-white/10 p-10 rounded-[2.5rem] overflow-hidden">
+                    <div className="absolute -inset-1 bg-gradient-to-r from-primary/20 to-secondary/20 rounded-[2.5rem] blur-xl opacity-0 group-hover:opacity-100 transition duration-1000 hidden sm:block"></div>
+                    <div className="relative bg-black/40 backdrop-blur-xl border border-white/10 p-4 sm:p-6 md:p-10 rounded-3xl md:rounded-[2.5rem] overflow-hidden">
 
-                        <div className="absolute top-6 right-2 p-10 opacity-20 pointer-events-none">
+                        <div className="absolute top-6 right-2 p-10 opacity-20 pointer-events-none hidden md:block">
                             <Send size={120} className="text-primary -rotate-12 translate-x-10 -translate-y-10" />
                         </div>
 
@@ -143,9 +143,9 @@ const Contact = () => {
                                     setTimeout(() => setStatus("idle"), 5000);
                                 }
                             }}
-                            className="space-y-6 relative z-10"
+                            className="space-y-4 md:space-y-6 relative z-10 w-full max-w-full overflow-hidden"
                         >
-                            <div className="grid md:grid-cols-2 gap-6">
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                                 <div className="space-y-2">
                                     <label className="text-xs uppercase tracking-widest text-muted-foreground font-bold ml-4">Name</label>
                                     <input
@@ -153,7 +153,7 @@ const Contact = () => {
                                         type="text"
                                         required
                                         placeholder="John Doe"
-                                        className="w-full bg-white/5 border border-white/10 px-6 py-4 rounded-2xl focus:outline-none focus:border-primary/50 focus:bg-white/10 transition-all text-white placeholder:text-white/20"
+                                        className="w-full bg-white/5 border border-white/10 px-4 sm:px-6 py-4 rounded-2xl focus:outline-none focus:border-primary/50 focus:bg-white/10 transition-all text-white placeholder:text-white/20"
                                     />
                                 </div>
                                 <div className="space-y-2">
@@ -163,16 +163,16 @@ const Contact = () => {
                                         type="email"
                                         required
                                         placeholder="john@example.com"
-                                        className="w-full bg-white/5 border border-white/10 px-6 py-4 rounded-2xl focus:outline-none focus:border-primary/50 focus:bg-white/10 transition-all text-white placeholder:text-white/20"
+                                        className="w-full bg-white/5 border border-white/10 px-4 sm:px-6 py-4 rounded-2xl focus:outline-none focus:border-primary/50 focus:bg-white/10 transition-all text-white placeholder:text-white/20"
                                     />
                                 </div>
                             </div>
                             <div className="space-y-2">
                                 <label className="text-xs uppercase tracking-widest text-muted-foreground font-bold ml-4">Phone</label>
-                                <div className="flex gap-4">
+                                <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
                                     <select
                                         name="countryCode"
-                                        className="bg-white/5 border border-white/10 px-4 py-4 rounded-2xl focus:outline-none focus:border-primary/50 focus:bg-white/10 transition-all text-white w-[140px] appearance-none cursor-pointer"
+                                        className="bg-white/5 border border-white/10 px-4 py-4 rounded-2xl focus:outline-none focus:border-primary/50 focus:bg-white/10 transition-all text-white w-full sm:w-[100px] md:w-[140px] appearance-none cursor-pointer text-sm"
                                         defaultValue="+91"
                                     >
                                         <option value="+1">🇺🇸 +1</option>
@@ -190,7 +190,7 @@ const Contact = () => {
                                         type="tel"
                                         required
                                         placeholder="123 456 7890"
-                                        className="flex-1 bg-white/5 border border-white/10 px-6 py-4 rounded-2xl focus:outline-none focus:border-primary/50 focus:bg-white/10 transition-all text-white placeholder:text-white/20"
+                                        className="flex-1 bg-white/5 border border-white/10 px-4 sm:px-6 py-4 rounded-2xl focus:outline-none focus:border-primary/50 focus:bg-white/10 transition-all text-white placeholder:text-white/20 min-w-0"
                                     />
                                 </div>
                             </div>
@@ -201,13 +201,13 @@ const Contact = () => {
                                     required
                                     rows={4}
                                     placeholder="Tell me about your project..."
-                                    className="w-full bg-white/5 border border-white/10 px-6 py-4 rounded-2xl focus:outline-none focus:border-primary/50 focus:bg-white/10 transition-all text-white resize-none placeholder:text-white/20"
+                                    className="w-full bg-white/5 border border-white/10 px-4 sm:px-6 py-4 rounded-2xl focus:outline-none focus:border-primary/50 focus:bg-white/10 transition-all text-white resize-none placeholder:text-white/20"
                                 ></textarea>
                             </div>
                             <div className="space-y-4">
                                 <button
                                     disabled={status === "sending" || status === "success"}
-                                    className={`w-full py-5 font-bold rounded-2xl transition-all flex items-center justify-center gap-2 group shadow-lg 
+                                    className={`w-full py-4 sm:py-5 text-sm sm:text-base font-bold rounded-2xl transition-all flex items-center justify-center gap-2 group shadow-lg 
                                         ${status === "success"
                                             ? "bg-green-500 text-white shadow-green-500/25"
                                             : "bg-gradient-to-r from-primary to-secondary text-white hover:opacity-90 shadow-primary/25"

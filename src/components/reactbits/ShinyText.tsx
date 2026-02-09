@@ -111,7 +111,7 @@ const ShinyText: React.FC<ShinyTextProps> = ({
 
     return (
         <motion.span
-            className={`inline-block ${className}`}
+            className={`inline ${className} break-all md:break-words`}
             style={{ ...gradientStyle, backgroundPosition }}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
