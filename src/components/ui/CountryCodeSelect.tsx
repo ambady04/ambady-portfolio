@@ -259,7 +259,7 @@ const CountryCodeSelect: React.FC<CountryCodeSelectProps> = ({
             {/* Trigger Button */}
             <div
                 onClick={() => setIsOpen(!isOpen)}
-                className="flex items-center justify-between bg-white/5 border border-white/10 px-4 py-4 rounded-2xl hover:bg-white/10 hover:border-primary/50 transition-all cursor-pointer text-white w-full sm:w-[130px] md:w-[160px]"
+                className="flex items-center justify-between bg-foreground/5 border border-foreground/10 px-4 py-4 rounded-2xl hover:bg-foreground/10 hover:border-primary/50 transition-all cursor-pointer text-foreground w-full sm:w-[130px] md:w-[160px]"
             >
                 <div className="flex items-center gap-3 overflow-hidden">
                     <img
@@ -277,8 +277,8 @@ const CountryCodeSelect: React.FC<CountryCodeSelectProps> = ({
 
             {/* Dropdown Menu */}
             {isOpen && (
-                <div className="absolute top-full left-0 mt-2 w-[240px] sm:w-[280px] bg-black/90 backdrop-blur-2xl border border-white/10 rounded-2xl shadow-2xl z-[100] animate-in fade-in zoom-in-95 duration-200 overflow-hidden">
-                    <div className="p-3 border-b border-white/5 bg-white/5">
+                <div className="absolute top-full left-0 mt-2 w-[240px] sm:w-[280px] bg-[var(--glass-bg)] backdrop-blur-2xl border border-[var(--glass-border)] rounded-2xl shadow-2xl z-[100] animate-in fade-in zoom-in-95 duration-200 overflow-hidden">
+                    <div className="p-3 border-b border-foreground/5 bg-foreground/5">
                         <div className="relative">
                             <Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" />
                             <input
@@ -286,7 +286,7 @@ const CountryCodeSelect: React.FC<CountryCodeSelectProps> = ({
                                 placeholder="Search country..."
                                 value={searchQuery}
                                 onChange={(e) => setSearchQuery(e.target.value)}
-                                className="w-full bg-black/40 border border-white/10 pl-9 pr-4 py-2 rounded-xl text-xs focus:outline-none focus:border-primary/50 text-white placeholder:text-muted-foreground"
+                                className="w-full bg-background/40 border border-[var(--glass-border)] pl-9 pr-4 py-2 rounded-xl text-xs focus:outline-none focus:border-primary/50 text-foreground placeholder:text-muted-foreground"
                                 autoFocus
                                 onClick={(e) => e.stopPropagation()}
                             />
@@ -300,7 +300,7 @@ const CountryCodeSelect: React.FC<CountryCodeSelectProps> = ({
                                     key={`${country.name}-${country.code}`}
                                     onClick={() => handleSelect(country)}
                                     className={cn(
-                                        "flex items-center justify-between px-4 py-3 hover:bg-white/5 cursor-pointer transition-colors border-b border-white/[0.02] last:border-0",
+                                        "flex items-center justify-between px-4 py-3 hover:bg-foreground/5 cursor-pointer transition-colors border-b border-foreground/[0.02] last:border-0",
                                         selectedCountry.iso === country.iso && selectedCountry.code === country.code && "bg-primary/10"
                                     )}
                                 >
@@ -311,7 +311,7 @@ const CountryCodeSelect: React.FC<CountryCodeSelectProps> = ({
                                             className="w-8 h-5 object-cover rounded-[2px] shadow-sm flex-shrink-0"
                                         />
                                         <div className="flex flex-col">
-                                            <span className="text-sm text-white font-medium">{country.name}</span>
+                                            <span className="text-sm text-foreground font-medium">{country.name}</span>
                                             <span className="text-[10px] text-muted-foreground uppercase tracking-wider font-bold">{country.code}</span>
                                         </div>
                                     </div>
@@ -334,15 +334,15 @@ const CountryCodeSelect: React.FC<CountryCodeSelectProps> = ({
           width: 5px;
         }
         .custom-scrollbar::-webkit-scrollbar-track {
-          background: rgba(255, 255, 255, 0.02);
+          background: rgba(var(--foreground), 0.02);
           border-radius: 10px;
         }
         .custom-scrollbar::-webkit-scrollbar-thumb {
-          background: rgba(255, 255, 255, 0.1);
+          background: rgba(var(--foreground), 0.1);
           border-radius: 10px;
         }
         .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-          background: rgba(255, 255, 255, 0.2);
+          background: rgba(var(--foreground), 0.2);
         }
       `}</style>
         </div>

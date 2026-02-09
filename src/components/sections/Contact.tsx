@@ -36,14 +36,14 @@ const Contact = () => {
         <section
             id="contact"
             ref={sectionRef}
-            className="py-16 md:py-24 px-4 md:px-6 max-w-7xl mx-auto border-t border-white/5 overflow-hidden"
+            className="py-16 md:py-24 px-4 md:px-6 max-w-7xl mx-auto border-t border-foreground/5 overflow-hidden"
         >
             <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center w-full max-w-5xl mx-auto">
                 <div>
                     <h2 className="text-sm font-bold uppercase tracking-[0.3em] text-primary mb-4 flex items-center gap-2">
                         <span className="w-8 h-[1px] bg-primary"></span> Connection
                     </h2>
-                    <h3 className="text-[clamp(1.5rem,8vw,4.5rem)] font-bold tracking-tighter text-white mb-8 leading-[1.1] break-all sm:break-words">
+                    <h3 className="text-[clamp(1.5rem,8vw,4.5rem)] font-bold tracking-tighter text-foreground mb-8 leading-[1.1] break-all sm:break-words">
                         Let's build <br />
                         <span className="text-primary italic font-serif">something</span>{" "}
                         extraordinary.
@@ -56,7 +56,7 @@ const Contact = () => {
                             </div>
                             <div className="w-full overflow-hidden">
                                 <p className="text-[9px] uppercase tracking-widest text-muted-foreground mb-0.5">Email Me</p>
-                                <a href={`mailto:${portfolioData.email}`} className="text-base sm:text-xl font-bold text-white hover:text-primary transition-colors block truncate w-full">
+                                <a href={`mailto:${portfolioData.email}`} className="text-base sm:text-xl font-bold text-foreground hover:text-primary transition-colors block truncate w-full">
                                     {portfolioData.email}
                                 </a>
                             </div>
@@ -68,7 +68,7 @@ const Contact = () => {
                             </div>
                             <div className="w-full overflow-hidden">
                                 <p className="text-[9px] uppercase tracking-widest text-muted-foreground mb-0.5">Call Me</p>
-                                <a href={`tel:${portfolioData.phone}`} className="text-base sm:text-xl font-bold text-white hover:text-primary transition-colors block truncate w-full">
+                                <a href={`tel:${portfolioData.phone}`} className="text-base sm:text-xl font-bold text-foreground hover:text-primary transition-colors block truncate w-full">
                                     {portfolioData.phone}
                                 </a>
                             </div>
@@ -80,7 +80,7 @@ const Contact = () => {
                             </div>
                             <div className="w-full overflow-hidden">
                                 <p className="text-[9px] uppercase tracking-widest text-muted-foreground mb-0.5">Location</p>
-                                <p className="text-base sm:text-xl font-bold text-white block truncate w-full">
+                                <p className="text-base sm:text-xl font-bold text-foreground block truncate w-full">
                                     {portfolioData.location}
                                 </p>
                             </div>
@@ -90,13 +90,13 @@ const Contact = () => {
 
                 <div className="relative group">
                     <div className="absolute -inset-1 bg-gradient-to-r from-primary/20 to-secondary/20 rounded-[2.5rem] blur-xl opacity-0 group-hover:opacity-100 transition duration-1000 hidden sm:block"></div>
-                    <div className="relative bg-black/40 backdrop-blur-xl border border-white/10 p-4 sm:p-6 md:p-10 rounded-3xl md:rounded-[2.5rem] overflow-hidden">
+                    <div className="relative bg-[var(--glass-bg)] backdrop-blur-xl border border-[var(--glass-border)] p-4 sm:p-6 md:p-10 rounded-3xl md:rounded-[2.5rem] overflow-hidden">
 
                         <div className="absolute top-6 right-2 p-10 opacity-20 pointer-events-none hidden md:block">
                             <Send size={120} className="text-primary -rotate-12 translate-x-10 -translate-y-10" />
                         </div>
 
-                        <h4 className="text-3xl font-bold text-white mb-2">Send Message</h4>
+                        <h4 className="text-3xl font-bold text-foreground mb-2">Send Message</h4>
                         <p className="text-muted-foreground mb-8 text-sm">I'm always open to discussing product design work or partnership opportunities.</p>
 
                         <form
@@ -154,7 +154,7 @@ const Contact = () => {
                                         type="text"
                                         required
                                         placeholder="John Doe"
-                                        className="w-full bg-white/5 border border-white/10 px-4 sm:px-6 py-4 rounded-2xl focus:outline-none focus:border-primary/50 focus:bg-white/10 transition-all text-white placeholder:text-white/20"
+                                        className="w-full bg-foreground/5 border border-foreground/10 px-4 sm:px-6 py-4 rounded-2xl focus:outline-none focus:border-primary/50 focus:bg-foreground/10 transition-all text-foreground placeholder:text-foreground/20"
                                     />
                                 </div>
                                 <div className="space-y-2">
@@ -164,7 +164,7 @@ const Contact = () => {
                                         type="email"
                                         required
                                         placeholder="john@example.com"
-                                        className="w-full bg-white/5 border border-white/10 px-4 sm:px-6 py-4 rounded-2xl focus:outline-none focus:border-primary/50 focus:bg-white/10 transition-all text-white placeholder:text-white/20"
+                                        className="w-full bg-foreground/5 border border-foreground/10 px-4 sm:px-6 py-4 rounded-2xl focus:outline-none focus:border-primary/50 focus:bg-foreground/10 transition-all text-foreground placeholder:text-foreground/20"
                                     />
                                 </div>
                             </div>
@@ -180,7 +180,7 @@ const Contact = () => {
                                         type="tel"
                                         required
                                         placeholder="123 456 7890"
-                                        className="flex-1 bg-white/5 border border-white/10 px-4 sm:px-6 py-4 rounded-2xl focus:outline-none focus:border-primary/50 focus:bg-white/10 transition-all text-white placeholder:text-white/20 min-w-0"
+                                        className="flex-1 bg-foreground/5 border border-foreground/10 px-4 sm:px-6 py-4 rounded-2xl focus:outline-none focus:border-primary/50 focus:bg-foreground/10 transition-all text-foreground placeholder:text-foreground/20 min-w-0"
                                     />
                                 </div>
                             </div>
@@ -191,7 +191,7 @@ const Contact = () => {
                                     required
                                     rows={4}
                                     placeholder="Tell me about your project..."
-                                    className="w-full bg-white/5 border border-white/10 px-4 sm:px-6 py-4 rounded-2xl focus:outline-none focus:border-primary/50 focus:bg-white/10 transition-all text-white resize-none placeholder:text-white/20"
+                                    className="w-full bg-foreground/5 border border-foreground/10 px-4 sm:px-6 py-4 rounded-2xl focus:outline-none focus:border-primary/50 focus:bg-foreground/10 transition-all text-foreground resize-none placeholder:text-foreground/20"
                                 ></textarea>
                             </div>
                             <div className="space-y-4">

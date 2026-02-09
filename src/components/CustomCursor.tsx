@@ -93,13 +93,13 @@ const CustomCursor = () => {
                     ease: "power2.inOut"
                 });
                 gsap.to(outer, {
-                    stroke: "rgba(255, 255, 255, 0.2)",
+                    stroke: "var(--primary-hex)",
                     strokeWidth: 0.5,
                     duration: 0.3,
                     ease: "power2.inOut"
                 });
                 gsap.to(prism, {
-                    fill: "#BA63F8",
+                    fill: "var(--primary)",
                     duration: 0.3,
                     ease: "power2.inOut"
                 });
@@ -134,7 +134,7 @@ const CustomCursor = () => {
                 <circle
                     ref={prismRef}
                     r="3"
-                    fill="#BA63F8"
+                    fill="var(--primary)"
                     cx="0"
                     cy="0"
                 />

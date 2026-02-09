@@ -92,7 +92,7 @@ const Projects = () => {
         <section
             id="projects"
             ref={sectionRef}
-            className="py-16 md:py-24 px-6 max-w-7xl mx-auto border-t border-white/5"
+            className="py-16 md:py-24 px-6 max-w-7xl mx-auto border-t border-foreground/5"
             onMouseMove={handleMouseMove}
         >
             <div ref={headerRef} className="mb-16 flex flex-col md:flex-row md:items-end justify-between gap-8 w-full max-w-5xl mx-auto px-4">
@@ -102,12 +102,12 @@ const Projects = () => {
                         <ShinyText
                             text="Selected Works"
                             className="text-sm font-bold uppercase tracking-[0.3em] text-primary"
-                            color="#BA63F8"
+                            color="var(--primary)"
                         />
                     </div>
                     <SplitText
                         text="Engineering Impact."
-                        className="text-3xl md:text-5xl font-bold tracking-tighter text-white"
+                        className="text-3xl md:text-5xl font-bold tracking-tighter text-foreground"
                         delay={50}
                         duration={0.6}
                     />
@@ -119,13 +119,13 @@ const Projects = () => {
                     <div
                         key={index}
                         ref={(el) => { if (el) projectCards.current[index] = el; }}
-                        className="group relative p-4 md:p-8 bg-card border border-white/5 rounded-3xl md:rounded-[2.5rem] overflow-hidden hover:border-primary/40 transition-all duration-700"
+                        className="group relative p-4 md:p-8 bg-card border border-foreground/5 rounded-3xl md:rounded-[2.5rem] overflow-hidden hover:border-primary/40 transition-all duration-700"
                     >
                         {/* Spotlight Effect overlay */}
                         <div
                             className="pointer-events-none absolute -inset-px opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-30"
                             style={{
-                                background: `radial-gradient(600px circle at var(--mouse-x) var(--mouse-y), rgba(186, 99, 248, 0.1), transparent 40%)`
+                                background: `radial-gradient(600px circle at var(--mouse-x) var(--mouse-y), rgba(var(--primary-hex), 0.1), transparent 40%)`
                             }}
                         />
 
@@ -137,12 +137,12 @@ const Projects = () => {
                                 <div className="p-4 bg-primary/10 rounded-2xl text-primary group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
                                     <Layers size={24} />
                                 </div>
-                                <p className="text-xs font-bold uppercase tracking-widest text-muted-foreground border border-white/10 px-4 py-1 rounded-full">
+                                <p className="text-xs font-bold uppercase tracking-widest text-muted-foreground border border-foreground/10 px-4 py-1 rounded-full">
                                     {project.period}
                                 </p>
                             </div>
 
-                            <h4 className="text-2xl md:text-3xl font-bold text-white mb-4 group-hover:text-primary transition-colors break-words">
+                            <h4 className="text-2xl md:text-3xl font-bold text-foreground mb-4 group-hover:text-primary transition-colors break-words">
                                 {project.title}
                             </h4>
 
