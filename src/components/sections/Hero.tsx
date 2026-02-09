@@ -101,7 +101,7 @@ const Hero = () => {
                             className="inline-block px-1"
                         />
                     </span>
-                    <span className="mt-4 text-primary italic font-serif lowercase tracking-normal text-lg md:text-4xl drop-shadow-[0_0_15px_rgba(var(--primary-hex),0.5)]">
+                    <span className="mt-4 text-primary italic font-serif lowercase tracking-normal text-lg md:text-4xl">
                         shaping next-gen reality.
                     </span>
                 </h1>

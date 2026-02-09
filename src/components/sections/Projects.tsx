@@ -125,7 +125,7 @@ const Projects = () => {
                         <div
                             className="pointer-events-none absolute -inset-px opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-30"
                             style={{
-                                background: `radial-gradient(600px circle at var(--mouse-x) var(--mouse-y), rgba(var(--primary-hex), 0.1), transparent 40%)`
+                                background: `radial-gradient(600px circle at var(--mouse-x) var(--mouse-y), rgba(var(--primary-hex), 0.25), transparent 40%)`
                             }}
                         />
 
