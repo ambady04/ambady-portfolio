@@ -111,8 +111,10 @@ const Contact = () => {
                                 const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
 
                                 if (!serviceId || !templateId || !publicKey) {
-                                    setStatus("idle");
                                     console.error('Email service is not configured');
+                                    setStatus("error");
+                                    // Optionally provide a more specific error state or message here
+                                    setTimeout(() => setStatus("idle"), 5000);
                                     return;
                                 }
 

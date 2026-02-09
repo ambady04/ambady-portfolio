@@ -136,7 +136,7 @@ const HeroBackground = () => {
                         <div
                             key={i}
                             ref={(el) => { if (el) bubblesRef.current[i] = el; }}
-                            className="absolute bg-primary/[0.08] border border-primary/20 rounded-full backdrop-blur-[4px] shadow-[0_4px_12px_rgba(var(--primary-hex),0.1)]"
+                            className="absolute bg-primary/[0.08] border border-primary/20 rounded-full backdrop-blur-[4px]"
                             style={{
                                 width: `${Math.random() * 60 + 20}px`,
                                 height: `${Math.random() * 60 + 20}px`,
