@@ -87,14 +87,16 @@ const CustomCursor = () => {
             const target = e.target as HTMLElement;
             if (target.tagName === "A" || target.tagName === "BUTTON" || target.closest("a") || target.closest("button")) {
                 gsap.to(inner, {
-                    stroke: "rgba(255, 255, 255, 0.4)",
+                    stroke: "var(--foreground)",
+                    opacity: 0.4,
                     strokeWidth: 1,
                     duration: 0.3,
                     ease: "power2.inOut"
                 });
                 gsap.to(outer, {
-                    stroke: "var(--primary-hex)",
-                    strokeWidth: 0.5,
+                    stroke: "var(--primary)",
+                    opacity: 0.4,
+                    strokeWidth: 1,
                     duration: 0.3,
                     ease: "power2.inOut"
                 });
@@ -122,7 +124,6 @@ const CustomCursor = () => {
     return (
         <div
             className="pointer-events-none fixed inset-0 z-[9999] hidden md:block"
-            style={{ mixBlendMode: "difference" }}
         >
             <svg
                 ref={assemblyRef}
@@ -146,7 +147,8 @@ const CustomCursor = () => {
                     height="30"
                     rx="8"
                     fill="none"
-                    stroke="rgba(255, 255, 255, 0.4)"
+                    stroke="var(--foreground)"
+                    strokeOpacity="0.4"
                     strokeWidth="1"
                 />
                 <rect
@@ -157,8 +159,9 @@ const CustomCursor = () => {
                     height="44"
                     rx="12"
                     fill="none"
-                    stroke="rgba(255, 255, 255, 0.2)"
-                    strokeWidth="0.5"
+                    stroke="var(--primary)"
+                    strokeOpacity="0.4"
+                    strokeWidth="1"
                 />
             </svg>
         </div>
