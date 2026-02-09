@@ -11,6 +11,8 @@ const HeroBackground = () => {
     const orb1Ref = useRef<HTMLDivElement>(null);
     const orb2Ref = useRef<HTMLDivElement>(null);
     const orb3Ref = useRef<HTMLDivElement>(null);
+    const orb4Ref = useRef<HTMLDivElement>(null);
+    const orb5Ref = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         setIsMounted(true);
@@ -37,6 +39,8 @@ const HeroBackground = () => {
             animateOrb(orb1Ref, 0);
             animateOrb(orb2Ref, 2);
             animateOrb(orb3Ref, 4);
+            animateOrb(orb4Ref, 1);
+            animateOrb(orb5Ref, 3);
 
             // Subtle rotation for the whole container to keep the mesh "alive"
             gsap.to(".mesh-blob", {
@@ -52,7 +56,7 @@ const HeroBackground = () => {
             const xPos = (clientX / window.innerWidth - 0.5) * 40;
             const yPos = (clientY / window.innerHeight - 0.5) * 40;
 
-            gsap.to([orb1Ref.current, orb2Ref.current, orb3Ref.current], {
+            gsap.to([orb1Ref.current, orb2Ref.current, orb3Ref.current, orb4Ref.current, orb5Ref.current], {
                 xPercent: xPos,
                 yPercent: yPos,
                 duration: 2,
@@ -72,6 +76,10 @@ const HeroBackground = () => {
         <div ref={containerRef} className="absolute inset-0 overflow-hidden pointer-events-none z-0">
             {/* Theme Aware Background */}
             <div className="absolute inset-0 bg-background" />
+
+            {/* Light Mode subtle gradient - Added depth for light mode */}
+            <div className="absolute inset-0 bg-gradient-to-tr from-primary/10 via-transparent to-background dark:hidden block" />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(var(--primary-hex),0.08),transparent_50%)] dark:hidden block" />
 
             {/* Premium Aceternity Stars Background - Hidden in light mode */}
             <div className="dark:block hidden">
@@ -97,15 +105,23 @@ const HeroBackground = () => {
             {/* Animated Mesh Blobs */}
             <div
                 ref={orb1Ref}
-                className="mesh-blob absolute top-[-10%] left-[-10%] w-[60%] h-[60%] bg-primary/20 rounded-full blur-[120px] opacity-60"
+                className="mesh-blob absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-primary/[0.08] dark:bg-primary/20 blur-[120px] rounded-full dark:mix-blend-screen mix-blend-multiply animate-pulse"
             />
             <div
                 ref={orb2Ref}
-                className="mesh-blob absolute bottom-[-10%] right-[-10%] w-[70%] h-[70%] bg-secondary/20 rounded-full blur-[150px] opacity-40"
+                className="mesh-blob absolute bottom-[-10%] right-[-10%] w-[45%] h-[45%] bg-primary/[0.08] dark:bg-primary/20 blur-[120px] rounded-full dark:mix-blend-screen mix-blend-multiply animate-pulse"
             />
             <div
                 ref={orb3Ref}
-                className="mesh-blob absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[50%] h-[50%] bg-[#BA63F8]/10 rounded-full blur-[100px] opacity-30"
+                className="mesh-blob absolute top-1/4 left-1/4 w-[40%] h-[40%] bg-primary/[0.05] dark:bg-primary/10 blur-[100px] rounded-full dark:mix-blend-screen mix-blend-multiply"
+            />
+            <div
+                ref={orb4Ref}
+                className="mesh-blob absolute bottom-1/4 right-1/4 w-[40%] h-[40%] bg-secondary/[0.05] dark:bg-secondary/10 blur-[100px] rounded-full dark:mix-blend-screen mix-blend-multiply"
+            />
+            <div
+                ref={orb5Ref}
+                className="mesh-blob absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[35%] h-[35%] bg-primary/[0.06] dark:bg-primary/15 blur-[90px] rounded-full dark:mix-blend-screen mix-blend-multiply"
             />
 
             {/* Grain Overlay for Texture */}

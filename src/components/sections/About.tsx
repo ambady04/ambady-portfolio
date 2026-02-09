@@ -53,16 +53,21 @@ const About = () => {
                         />
                     </div>
 
-                    <div className="relative group rounded-[2rem] overflow-hidden border border-foreground/10 w-full aspect-[4/5]">
-                        <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent z-10" />
+                    <div className="relative group rounded-[2rem] overflow-hidden border border-foreground/10 w-full aspect-[4/5] bg-foreground/5 shadow-2xl shadow-foreground/5">
+                        {/* Dark Mode Overlay */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent z-10 hidden dark:block" />
+
+                        {/* Light Mode Overlay (Subtle tint on hover) */}
+                        <div className="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700 z-10 dark:hidden" />
+
                         <img
                             src={portfolioData.image}
                             alt={portfolioData.name}
-                            className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 ease-out scale-105 group-hover:scale-100"
+                            className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 ease-out scale-110 group-hover:scale-100"
                         />
-                        <div className="absolute bottom-0 left-0 p-6 z-20 translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                            <p className="text-foreground font-bold text-xl">{portfolioData.name}</p>
-                            <p className="text-primary text-sm uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">Full Stack Developer</p>
+                        <div className="absolute bottom-0 left-0 p-6 z-20 translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
+                            <p className="text-foreground font-bold text-xl drop-shadow-[0_2px_4px_rgba(var(--background),0.8)] dark:drop-shadow-none">{portfolioData.name}</p>
+                            <p className="text-primary text-sm uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100 font-bold">Full Stack Developer</p>
                         </div>
                     </div>
                 </div>
