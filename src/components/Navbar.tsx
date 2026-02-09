@@ -6,6 +6,7 @@ import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { gsap } from "gsap";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
+import { ThemeToggle } from "./ThemeToggle";
 
 gsap.registerPlugin(ScrollToPlugin);
 
@@ -46,14 +47,14 @@ const Navbar = () => {
                 scrolled ? "translate-y-0" : "translate-y-0"
             )}
         >
-            <div className="max-w-7xl mx-auto flex items-center justify-between bg-black/50 backdrop-blur-lg border border-white/10 px-4 md:px-6 py-3 rounded-2xl">
+            <div className="max-w-7xl mx-auto flex items-center justify-between bg-[var(--glass-bg)] backdrop-blur-lg border border-[var(--glass-border)] px-4 md:px-6 py-3 rounded-2xl">
                 <a
                     href="/"
                     onClick={(e) => {
                         e.preventDefault();
                         window.location.href = '/';
                     }}
-                    className="text-xl md:text-2xl font-black tracking-tighter text-white"
+                    className="text-xl md:text-2xl font-black tracking-tighter text-foreground"
                 >
                     Ambady<span className="text-primary italic">.</span>
                 </a>
@@ -70,35 +71,41 @@ const Navbar = () => {
                             {link.name}
                         </a>
                     ))}
-                    <a
-                        href="#contact"
-                        onClick={(e) => handleScrollTo(e, "#contact")}
-                        className="px-5 py-2 bg-primary text-black font-bold rounded-full text-sm hover:bg-white transition-all transform hover:scale-105 active:scale-95"
-                    >
-                        Hire Me
-                    </a>
+                    <div className="flex items-center space-x-4">
+                        <ThemeToggle />
+                        <a
+                            href="#contact"
+                            onClick={(e) => handleScrollTo(e, "#contact")}
+                            className="px-5 py-2 bg-primary text-primary-foreground font-bold rounded-full text-sm hover:scale-105 transition-all transform active:scale-95"
+                        >
+                            Hire Me
+                        </a>
+                    </div>
                 </div>
 
                 {/* Mobile Toggle */}
-                {!isOpen && (
-                    <button
-                        className="md:hidden text-white"
-                        onClick={() => setIsOpen(true)}
-                    >
-                        <Menu size={28} />
-                    </button>
-                )}
+                <div className="flex items-center space-x-4 md:hidden">
+                    <ThemeToggle />
+                    {!isOpen && (
+                        <button
+                            className="text-foreground"
+                            onClick={() => setIsOpen(true)}
+                        >
+                            <Menu size={28} />
+                        </button>
+                    )}
+                </div>
             </div>
 
             {/* Mobile Menu */}
             <div
                 className={cn(
-                    "fixed inset-0 bg-black z-50 md:hidden flex flex-col items-center justify-center space-y-8 transition-all duration-500",
+                    "fixed inset-0 bg-background z-50 md:hidden flex flex-col items-center justify-center space-y-8 transition-all duration-500",
                     isOpen ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0"
                 )}
             >
                 <button
-                    className="absolute top-8 right-8 text-white hover:text-primary transition-colors"
+                    className="absolute top-8 right-8 text-foreground hover:text-primary transition-colors"
                     onClick={() => setIsOpen(false)}
                 >
                     <X size={32} />
@@ -109,7 +116,7 @@ const Navbar = () => {
                         key={link.name}
                         href={link.href}
                         onClick={(e) => handleScrollTo(e, link.href)}
-                        className="text-3xl font-bold text-white hover:text-primary transition-colors"
+                        className="text-3xl font-bold text-foreground hover:text-primary transition-colors"
                     >
                         {link.name}
                     </a>
@@ -117,7 +124,7 @@ const Navbar = () => {
                 <a
                     href="#contact"
                     onClick={(e) => handleScrollTo(e, "#contact")}
-                    className="px-8 py-3 bg-primary text-black font-bold rounded-full text-xl hover:bg-white transition-all transform hover:scale-105 active:scale-95"
+                    className="px-8 py-3 bg-primary text-primary-foreground font-bold rounded-full text-xl hover:scale-105 transition-all transform active:scale-95"
                 >
                     Hire Me
                 </a>

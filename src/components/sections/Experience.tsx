@@ -79,7 +79,7 @@ const Experience = () => {
         <section
             id="experience"
             ref={sectionRef}
-            className="py-16 md:py-24 px-6 max-w-7xl mx-auto border-t border-white/5"
+            className="py-16 md:py-24 px-6 max-w-7xl mx-auto border-t border-foreground/5"
         >
             <div ref={headerRef} className="mb-16 w-full max-w-5xl mx-auto px-4">
                 <div className="mb-4 flex items-center gap-2">
@@ -87,10 +87,10 @@ const Experience = () => {
                     <ShinyText
                         text="Career Path"
                         className="text-sm font-bold uppercase tracking-[0.3em] text-primary"
-                        color="#BA63F8"
+                        color="var(--primary)"
                     />
                 </div>
-                <h3 className="text-3xl md:text-5xl font-bold tracking-tighter text-white">
+                <h3 className="text-3xl md:text-5xl font-bold tracking-tighter text-foreground">
                     Professional <span className="text-primary">Journey.</span>
                 </h3>
             </div>
@@ -100,7 +100,7 @@ const Experience = () => {
                     <div
                         key={index}
                         ref={(el) => { if (el) cardsRef.current[index] = el; }}
-                        className="group relative grid grid-cols-1 md:grid-cols-12 gap-8 p-4 md:p-8 bg-card border border-white/5 rounded-3xl hover:border-primary/30 transition-all duration-500"
+                        className="group relative grid grid-cols-1 md:grid-cols-12 gap-8 p-4 md:p-8 bg-card border border-foreground/5 rounded-3xl hover:border-primary/30 transition-all duration-500"
                     >
                         <div className="md:col-span-3">
                             <p className="text-sm font-bold text-primary uppercase tracking-widest bg-primary/10 px-4 py-2 rounded-full inline-block">
@@ -110,14 +110,14 @@ const Experience = () => {
                         <div className="md:col-span-9 exp-content">
                             <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
                                 <div>
-                                    <h4 className="text-xl md:text-2xl font-bold text-white group-hover:text-primary transition-colors">
+                                    <h4 className="text-xl md:text-2xl font-bold text-foreground group-hover:text-primary transition-colors">
                                         {exp.role}
                                     </h4>
                                     <p className="text-muted-foreground flex items-center gap-2">
                                         {exp.company} • {exp.location}
                                     </p>
                                 </div>
-                                <Briefcase className="text-white/20 hidden md:block group-hover:scale-110 group-hover:text-primary transition-all duration-500" size={32} />
+                                <Briefcase className="text-foreground/20 hidden md:block group-hover:scale-110 group-hover:text-primary transition-all duration-500" size={32} />
                             </div>
                             <ul className="space-y-3">
                                 {exp.description.map((item, i) => (

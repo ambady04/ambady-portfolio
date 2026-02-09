@@ -21,11 +21,11 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="bg-black text-white selection:bg-primary selection:text-black min-h-screen overflow-x-hidden">
+    <main className="bg-background text-foreground min-h-screen overflow-x-hidden">
       <CustomCursor />
       <Navbar />
       <Hero />
-      <div className="relative z-10 bg-black">
+      <div className="relative z-10 bg-background">
         <About />
         <Experience />
         <Projects />

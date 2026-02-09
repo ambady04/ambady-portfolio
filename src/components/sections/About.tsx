@@ -39,7 +39,7 @@ const About = () => {
         <section
             id="about"
             ref={sectionRef}
-            className="pt-8 pb-16 md:py-24 px-6 max-w-7xl mx-auto border-t border-white/5"
+            className="pt-8 pb-16 md:py-24 px-6 max-w-7xl mx-auto border-t border-foreground/5"
         >
             <div className="grid lg:grid-cols-12 gap-12 md:gap-20 items-center w-full max-w-5xl mx-auto px-4">
                 <div className="md:col-span-5 flex flex-col gap-8">
@@ -48,27 +48,27 @@ const About = () => {
                         <ShinyText
                             text="About Me"
                             className="text-sm font-bold uppercase tracking-[0.3em] text-primary"
-                            color="#BA63F8"
+                            color="var(--primary)"
                             speed={3}
                         />
                     </div>
 
-                    <div className="relative group rounded-[2rem] overflow-hidden border border-white/10 w-full aspect-[4/5]">
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-10" />
+                    <div className="relative group rounded-[2rem] overflow-hidden border border-foreground/10 w-full aspect-[4/5]">
+                        <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent z-10" />
                         <img
                             src={portfolioData.image}
                             alt={portfolioData.name}
                             className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 ease-out scale-105 group-hover:scale-100"
                         />
                         <div className="absolute bottom-0 left-0 p-6 z-20 translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                            <p className="text-white font-bold text-xl">{portfolioData.name}</p>
+                            <p className="text-foreground font-bold text-xl">{portfolioData.name}</p>
                             <p className="text-primary text-sm uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">Full Stack Developer</p>
                         </div>
                     </div>
                 </div>
 
                 <div ref={textRef} className="md:col-span-7 flex flex-col gap-6 w-full max-w-full">
-                    <div className="text-xl sm:text-2xl md:text-5xl font-bold tracking-tighter text-white leading-tight break-words">
+                    <div className="text-xl sm:text-2xl md:text-5xl font-bold tracking-tighter text-foreground leading-tight break-words">
                         <SplitText
                             text="Crafting Solutions,"
                             className="block"
@@ -81,13 +81,13 @@ const About = () => {
                     </p>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
                         <div>
-                            <p className="text-4xl font-bold text-white tracking-tighter">4+</p>
+                            <p className="text-4xl font-bold text-foreground tracking-tighter">4+</p>
                             <p className="text-sm text-primary uppercase tracking-widest mt-1">
                                 Years Experience
                             </p>
                         </div>
                         <div>
-                            <p className="text-4xl font-bold text-white tracking-tighter">
+                            <p className="text-4xl font-bold text-foreground tracking-tighter">
                                 10+
                             </p>
                             <p className="text-sm text-primary uppercase tracking-widest mt-1">
@@ -95,7 +95,7 @@ const About = () => {
                             </p>
                         </div>
                         <div>
-                            <p className="text-4xl font-bold text-white tracking-tighter">
+                            <p className="text-4xl font-bold text-foreground tracking-tighter">
                                 100%
                             </p>
                             <p className="text-sm text-primary uppercase tracking-widest mt-1">
@@ -103,7 +103,7 @@ const About = () => {
                             </p>
                         </div>
                         <div>
-                            <p className="text-4xl font-bold text-white tracking-tighter">
+                            <p className="text-4xl font-bold text-foreground tracking-tighter">
                                 Global
                             </p>
                             <p className="text-sm text-primary uppercase tracking-widest mt-1">

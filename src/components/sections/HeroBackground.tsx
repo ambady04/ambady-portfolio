@@ -70,27 +70,29 @@ const HeroBackground = () => {
 
     return (
         <div ref={containerRef} className="absolute inset-0 overflow-hidden pointer-events-none z-0">
-            {/* Base Dark Background */}
-            <div className="absolute inset-0 bg-black" />
+            {/* Theme Aware Background */}
+            <div className="absolute inset-0 bg-background" />
 
-            {/* Premium Aceternity Stars Background */}
-            <StarsBackground
-                starDensity={0.00015}
-                allStarsTwinkle={true}
-                twinkleProbability={0.7}
-                minTwinkleSpeed={0.5}
-                maxTwinkleSpeed={1.5}
-            />
+            {/* Premium Aceternity Stars Background - Hidden in light mode */}
+            <div className="dark:block hidden">
+                <StarsBackground
+                    starDensity={0.00015}
+                    allStarsTwinkle={true}
+                    twinkleProbability={0.7}
+                    minTwinkleSpeed={0.5}
+                    maxTwinkleSpeed={1.5}
+                />
 
-            {/* Premium Aceternity Shooting Stars */}
-            <ShootingStars
-                minSpeed={15}
-                maxSpeed={15}
-                minDelay={2000}
-                maxDelay={5000}
-                starColor="#E1BBFC"
-                trailColor="#9F27F5"
-            />
+                {/* Premium Aceternity Shooting Stars */}
+                <ShootingStars
+                    minSpeed={15}
+                    maxSpeed={15}
+                    minDelay={2000}
+                    maxDelay={5000}
+                    starColor="#E1BBFC"
+                    trailColor="#9F27F5"
+                />
+            </div>
 
             {/* Animated Mesh Blobs */}
             <div
@@ -110,7 +112,7 @@ const HeroBackground = () => {
             <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
 
             {/* Bottom Gradient Fade */}
-            <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-black to-transparent" />
+            <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-background to-transparent" />
         </div>
     );
 };
