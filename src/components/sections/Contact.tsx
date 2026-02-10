@@ -111,7 +111,12 @@ const Contact = () => {
                                 const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
 
                                 if (!serviceId || !templateId || !publicKey) {
-                                    console.error('Email service is not configured');
+                                    const missing = [];
+                                    if (!serviceId) missing.push('NEXT_PUBLIC_EMAILJS_SERVICE_ID');
+                                    if (!templateId) missing.push('NEXT_PUBLIC_EMAILJS_TEMPLATE_ID');
+                                    if (!publicKey) missing.push('NEXT_PUBLIC_EMAILJS_PUBLIC_KEY');
+
+                                    console.error('Email service is not configured. Missing variables:', missing.join(', '));
                                     setStatus("error");
                                     // Optionally provide a more specific error state or message here
                                     setTimeout(() => setStatus("idle"), 5000);
