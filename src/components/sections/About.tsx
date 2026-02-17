@@ -22,7 +22,7 @@ const About = () => {
                 {
                     y: 0,
                     opacity: 1,
-                    duration: 0.8,
+                    duration: 0.6,
                     ease: "power3.out",
                     scrollTrigger: {
                         trigger: sectionRef.current,
@@ -77,7 +77,7 @@ const About = () => {
                         <SplitText
                             text="Crafting Solutions,"
                             className="block"
-                            delay={50}
+                            delay={30}
                         />
                         <span className="text-primary italic font-serif">Building Impact.</span>
                     </div>

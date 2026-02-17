@@ -23,7 +23,7 @@ const Experience = () => {
                 {
                     y: 0,
                     opacity: 1,
-                    duration: 0.8,
+                    duration: 0.6,
                     ease: "power2.out",
                     scrollTrigger: {
                         trigger: headerRef.current,
@@ -41,13 +41,13 @@ const Experience = () => {
                         y: 0,
                         opacity: 1,
                         rotationX: 0,
-                        duration: 0.8,
+                        duration: 0.6,
                         ease: "power4.out",
                         scrollTrigger: {
                             trigger: card,
                             start: "top 95%",
                         },
-                        delay: index * 0.1,
+                        delay: index * 0.05,
                     }
                 );
 
@@ -59,14 +59,14 @@ const Experience = () => {
                     {
                         y: 0,
                         opacity: 1,
-                        duration: 0.6,
-                        stagger: 0.1,
+                        duration: 0.4,
+                        stagger: 0.05,
                         ease: "power2.out",
                         scrollTrigger: {
                             trigger: card,
                             start: "top 90%",
                         },
-                        delay: (index * 0.1) + 0.3
+                        delay: (index * 0.05) + 0.2
                     }
                 );
             });

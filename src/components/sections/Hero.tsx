@@ -27,7 +27,7 @@ const Hero = () => {
             tl.fromTo(
                 ".hero-content",
                 { y: 100, opacity: 0 },
-                { y: 0, opacity: 1, duration: 1.5, stagger: 0.2 }
+                { y: 0, opacity: 1, duration: 1.0, stagger: 0.15 }
             );
 
             // Staggered entrance for the shiny text specifically if needed
@@ -86,7 +86,7 @@ const Hero = () => {
                     <span className="text-[9px] md:text-xs uppercase tracking-[0.3em] md:tracking-[0.6em] text-foreground/50 mb-3 font-bold">
                         <BlurText
                             text="BUILDING THE"
-                            delay={100}
+                            delay={50}
                             animateBy="letters"
                             direction="top"
                             className="inline-block"

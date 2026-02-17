@@ -21,8 +21,8 @@ const Skills = () => {
                 {
                     y: 0,
                     opacity: 1,
-                    duration: 0.6,
-                    stagger: 0.1,
+                    duration: 0.5,
+                    stagger: 0.05,
                     ease: "power4.out",
                     scrollTrigger: {
                         trigger: sectionRef.current,
