@@ -52,11 +52,11 @@ const SplitText: React.FC<SplitTextProps> = ({
     return (
         <Tag
             ref={ref}
-            className={`inline-block overflow-hidden ${className}`}
+            className={`inline-block ${className}`}
             style={{ textAlign, whiteSpace: 'normal', wordBreak: 'break-word' }}
         >
             {elements.map((element, i) => (
-                <span key={i} style={{ display: 'inline-block', overflow: 'hidden', verticalAlign: 'top' }}>
+                <span key={i} style={{ display: 'inline-block', overflow: 'hidden', verticalAlign: 'bottom', paddingBottom: '0.3em', marginBottom: '-0.3em' }}>
                     <motion.span
                         initial={{ y: '100%', opacity: 0 }}
                         animate={inView ? { y: 0, opacity: 1 } : { y: '100%', opacity: 0 }}

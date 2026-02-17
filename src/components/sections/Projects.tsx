@@ -24,7 +24,7 @@ const Projects = () => {
                 {
                     y: 0,
                     opacity: 1,
-                    duration: 0.8,
+                    duration: 0.6,
                     ease: "power2.out",
                     scrollTrigger: {
                         trigger: headerRef.current,
@@ -42,13 +42,13 @@ const Projects = () => {
                         scale: 1,
                         opacity: 1,
                         rotationY: 0,
-                        duration: 0.9,
+                        duration: 0.6,
                         ease: "power4.out",
                         scrollTrigger: {
                             trigger: card,
                             start: "top 95%",
                         },
-                        delay: index * 0.15,
+                        delay: index * 0.1,
                     }
                 );
 
@@ -60,14 +60,14 @@ const Projects = () => {
                     {
                         y: 0,
                         opacity: 1,
-                        duration: 0.6,
-                        stagger: 0.1,
+                        duration: 0.4,
+                        stagger: 0.05,
                         ease: "power2.out",
                         scrollTrigger: {
                             trigger: card,
                             start: "top 90%",
                         },
-                        delay: (index * 0.15) + 0.4
+                        delay: (index * 0.1) + 0.2
                     }
                 );
             });
@@ -108,8 +108,8 @@ const Projects = () => {
                     <SplitText
                         text="Engineering Impact."
                         className="text-3xl md:text-5xl font-bold tracking-tighter text-foreground"
-                        delay={50}
-                        duration={0.6}
+                        delay={30}
+                        duration={0.4}
                     />
                 </div>
             </div>
