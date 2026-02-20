@@ -156,7 +156,9 @@ const Contact = () => {
                         >
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                                 <div className="space-y-2">
-                                    <label className="text-xs uppercase tracking-widest text-muted-foreground font-bold ml-4">Name</label>
+                                    <label className="text-xs uppercase tracking-widest text-muted-foreground font-bold ml-4">
+                                        Name <span className="text-red-500">*</span>
+                                    </label>
                                     <input
                                         name="name"
                                         type="text"
@@ -166,7 +168,9 @@ const Contact = () => {
                                     />
                                 </div>
                                 <div className="space-y-2">
-                                    <label className="text-xs uppercase tracking-widest text-muted-foreground font-bold ml-4">Email</label>
+                                    <label className="text-xs uppercase tracking-widest text-muted-foreground font-bold ml-4">
+                                        Email <span className="text-red-500">*</span>
+                                    </label>
                                     <input
                                         name="email"
                                         type="email"
@@ -186,14 +190,15 @@ const Contact = () => {
                                     <input
                                         name="phone"
                                         type="tel"
-                                        required
                                         placeholder="123 456 7890"
                                         className="flex-1 bg-foreground/5 border border-foreground/10 px-4 sm:px-6 py-4 rounded-2xl focus:outline-none focus:border-primary/50 focus:bg-foreground/10 transition-all text-foreground placeholder:text-foreground/20 min-w-0"
                                     />
                                 </div>
                             </div>
                             <div className="space-y-2">
-                                <label className="text-xs uppercase tracking-widest text-muted-foreground font-bold ml-4">Message</label>
+                                <label className="text-xs uppercase tracking-widest text-muted-foreground font-bold ml-4">
+                                    Message <span className="text-red-500">*</span>
+                                </label>
                                 <textarea
                                     name="message"
                                     required
