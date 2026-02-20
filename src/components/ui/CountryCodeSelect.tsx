@@ -224,7 +224,9 @@ const CountryCodeSelect: React.FC<CountryCodeSelectProps> = ({
     const [selectedCountry, setSelectedCountry] = useState<Country>(
         countries.find((c) => c.code === defaultValue) || countries.find((c) => c.code === "+91")!
     );
+    const [openUpwards, setOpenUpwards] = useState(false);
     const dropdownRef = useRef<HTMLDivElement>(null);
+    const triggerRef = useRef<HTMLDivElement>(null);
 
     const filteredCountries = countries.filter(
         (country) =>
@@ -242,6 +244,15 @@ const CountryCodeSelect: React.FC<CountryCodeSelectProps> = ({
         return () => document.removeEventListener("mousedown", handleClickOutside);
     }, []);
 
+    useEffect(() => {
+        if (isOpen && triggerRef.current) {
+            const rect = triggerRef.current.getBoundingClientRect();
+            const spaceBelow = window.innerHeight - rect.bottom;
+            // If less than 260px space below, open upwards
+            setOpenUpwards(spaceBelow < 260);
+        }
+    }, [isOpen]);
+
     const handleSelect = (country: Country) => {
         setSelectedCountry(country);
         setIsOpen(false);
@@ -258,6 +269,7 @@ const CountryCodeSelect: React.FC<CountryCodeSelectProps> = ({
 
             {/* Trigger Button */}
             <div
+                ref={triggerRef}
                 onClick={() => setIsOpen(!isOpen)}
                 className="flex items-center justify-between bg-foreground/5 border border-foreground/10 px-4 py-4 rounded-2xl hover:bg-foreground/10 hover:border-primary/50 transition-all cursor-pointer text-foreground w-full sm:w-[130px] md:w-[160px]"
             >
@@ -277,7 +289,10 @@ const CountryCodeSelect: React.FC<CountryCodeSelectProps> = ({
 
             {/* Dropdown Menu */}
             {isOpen && (
-                <div className="absolute top-full left-0 mt-2 w-[240px] sm:w-[280px] bg-[var(--glass-bg)] backdrop-blur-2xl border border-[var(--glass-border)] rounded-2xl shadow-2xl z-[100] animate-in fade-in zoom-in-95 duration-200 overflow-hidden">
+                <div className={cn(
+                    "absolute left-0 w-[240px] sm:w-[280px] bg-[var(--glass-bg)] backdrop-blur-2xl border border-[var(--glass-border)] rounded-2xl shadow-2xl z-[100] animate-in fade-in zoom-in-95 duration-200 overflow-hidden",
+                    openUpwards ? "bottom-full mb-2 slide-in-from-bottom-2" : "top-full mt-2 slide-in-from-top-2"
+                )}>
                     <div className="p-3 border-b border-foreground/5 bg-foreground/5">
                         <div className="relative">
                             <Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" />
@@ -293,7 +308,7 @@ const CountryCodeSelect: React.FC<CountryCodeSelectProps> = ({
                         </div>
                     </div>
 
-                    <div className="max-h-[300px] overflow-y-auto custom-scrollbar">
+                    <div className="max-h-[212px] overflow-y-auto custom-scrollbar pb-2">
                         {filteredCountries.length > 0 ? (
                             filteredCountries.map((country) => (
                                 <div
@@ -301,7 +316,7 @@ const CountryCodeSelect: React.FC<CountryCodeSelectProps> = ({
                                     onClick={() => handleSelect(country)}
                                     className={cn(
                                         "flex items-center justify-between px-4 py-3 hover:bg-foreground/5 cursor-pointer transition-colors border-b border-foreground/[0.02] last:border-0",
-                                        selectedCountry.iso === country.iso && selectedCountry.code === country.code && "bg-primary/10"
+                                        selectedCountry.iso === country.iso && selectedCountry.code === country.code && "bg-primary/20"
                                     )}
                                 >
                                     <div className="flex items-center gap-3">
