@@ -90,10 +90,11 @@ const Contact = () => {
 
                 <div className="relative group">
                     <div className="absolute -inset-1 bg-gradient-to-r from-primary/20 to-secondary/20 rounded-[2.5rem] blur-xl opacity-0 group-hover:opacity-100 transition duration-1000 hidden sm:block"></div>
-                    <div className="relative bg-[var(--glass-bg)] backdrop-blur-xl border border-[var(--glass-border)] p-4 sm:p-6 md:p-10 rounded-3xl md:rounded-[2.5rem] overflow-hidden">
-
-                        <div className="absolute top-6 right-2 p-10 opacity-20 pointer-events-none hidden md:block">
-                            <Send size={120} className="text-primary -rotate-12 translate-x-10 -translate-y-10" />
+                    <div className="relative bg-[var(--glass-bg)] backdrop-blur-xl border border-[var(--glass-border)] p-4 sm:p-6 md:p-10 rounded-3xl md:rounded-[2.5rem]">
+                        <div className="absolute inset-0 rounded-[inherit] overflow-hidden pointer-events-none">
+                            <div className="absolute top-6 right-2 p-10 opacity-20 hidden md:block">
+                                <Send size={120} className="text-primary -rotate-12 translate-x-10 -translate-y-10" />
+                            </div>
                         </div>
 
                         <h4 className="text-3xl font-bold text-foreground mb-2">Send Message</h4>
@@ -151,7 +152,7 @@ const Contact = () => {
                                     setTimeout(() => setStatus("idle"), 5000);
                                 }
                             }}
-                            className="space-y-4 md:space-y-6 relative z-10 w-full max-w-full overflow-hidden"
+                            className="space-y-4 md:space-y-6 relative z-10 w-full max-w-full"
                         >
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                                 <div className="space-y-2">
